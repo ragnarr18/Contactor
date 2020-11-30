@@ -18,9 +18,9 @@ extra feats:
 
 
 uppskiptun verkefna:
-     rgr:  navigation og listi yfir contacts + create contact
+  bjarni:  navigation og listi yfir contacts + create contact
    arnar:  "a user should be able to search for contacts by their name"
-  bjarni:  contact detail screen, modify information
+     rgr:  contact detail screen, modify information
 
      all:  File-system setup, extras
             extrax: import contacts, add image with camera or photo import, user can use it to call someone
