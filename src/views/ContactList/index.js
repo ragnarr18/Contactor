@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, TextInput, Text } from 'react-native';
+import { SearchBar } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import ContactListContainer from '../../components/ContactListContainer';
 import styles from './styles';
@@ -18,7 +19,7 @@ class ContactList extends React.Component {
   }
 
   editSearchTerm(e) {
-    this.setState({ searchTerm: e.target.value });
+    this.setState({ searchTerm: 'sally' });
   }
 
   dynamicSearch() {
@@ -34,8 +35,7 @@ class ContactList extends React.Component {
       <View>
         <View styles={styles.bottomBorder}>
           <Text style={styles.header}>HEADER</Text>
-          <TextInput
-            type="text"
+          <SearchBar
             value={this.state.searchTerm}
             onChange={this.editSearchTerm}
             placeholder="Search for a contact!"
