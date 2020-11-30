@@ -42,12 +42,14 @@ class ContactList extends React.Component {
       <View>
         <View styles={styles.bottomBorder}>
           <Text style={styles.header}>HEADER</Text>
-          <input
-            type="text"
-            value={this.state.searchTerm}
-            onChange={this.editSearchTerm}
-            placeholder="Search for a contact!"
-          />
+          <View>
+            <input
+              type="text"
+              value={this.state.searchTerm}
+              onChange={this.editSearchTerm}
+              placeholder="Search for a contact!"
+            />
+          </View>
         </View>
         <ContactListContainer
           navigation={navigation}

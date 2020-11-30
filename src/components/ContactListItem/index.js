@@ -10,17 +10,18 @@ class ContactListItem extends React.Component {
   }
 
   render() {
-    const { item } = this.props;
+    // const { item } = this.props;
+    const { name, phone } = this.props;
     return (
       <Collapse>
         <CollapseHeader>
           <Text>
-            {item.name}
+            {name}
           </Text>
         </CollapseHeader>
         <CollapseBody>
           <Text>
-            {item.phone}
+            {phone}
           </Text>
         </CollapseBody>
       </Collapse>
@@ -40,4 +41,8 @@ ContactListItem.propTypes = {
   }).isRequired,
 }
 */
+ContactListItem.defaultProps = {
+  phone: PropTypes.string = '',
+}
+
 export default ContactListItem;
