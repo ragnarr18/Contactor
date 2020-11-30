@@ -19,16 +19,15 @@ class ContactList extends React.Component {
   }
 
   editSearchTerm(text) {
+    console.log(text);
     this.setState({ searchTerm: text });
   }
 
   dynamicSearch() {
-    const things = this.state.names.filter(
+    return this.state.names.filter(
       (name) => name.toLowerCase()
         .includes(this.state.searchTerm.toString().toLowerCase()),
     );
-    console.log(things);
-    return things;
   }
 
   render() {
@@ -38,8 +37,10 @@ class ContactList extends React.Component {
         <View styles={styles.bottomBorder}>
           <Text style={styles.header}>HEADER</Text>
           <SearchBar
+            round
             value={this.state.searchTerm}
-            onChange={this.editSearchTerm}
+            onChangeText={(text) => this.editSearchTerm(text)}
+            onClear={() => this.setState({ searchTerm: '' })}
             placeholder="Search for a contact!"
           />
         </View>
