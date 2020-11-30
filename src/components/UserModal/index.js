@@ -18,13 +18,14 @@ class EditUser extends React.Component {
     } = this.props;
     return (
       <Modal>
-        show image here
-        upload button here
+        <Text>show image here</Text>
+        <Text>upload button here</Text>
         <Text>Name: </Text>
         <TextInput />
         <Text>Phone: </Text>
         <TextInput />
-        Cancel     Save
+        <Text>Cancel Save</Text>
+
       </Modal>
     );
   }
