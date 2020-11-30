@@ -35,16 +35,7 @@ class ContactListItem extends React.Component {
             </Text>
           </View>
           <View styles={styles.iconRow}>
-            <TouchableHighlight style={styles.icon}>
-              <Image style={styles.icon} source={call} />
-            </TouchableHighlight>
-<<<<<<< HEAD
-            <TouchableHighlight onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
-=======
-            <TouchableHighlight style={styles.icon} onPress={() => navigate('ContactInfo', { name, phone, image: 'image' })}>
->>>>>>> 78d56f4a8d8f88240e240a71ebffa32cbb9100f4
-              <Image style={styles.icon} source={info} />
-            </TouchableHighlight>
+            <TouchableHighlight style={styles.icon} onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })} />
           </View>
         </CollapseBody>
       </Collapse>

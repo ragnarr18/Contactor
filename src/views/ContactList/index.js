@@ -19,13 +19,13 @@ class ContactList extends React.Component {
   }
 
   editSearchTerm(e) {
-    this.setState({ searchTerm: 'sally' });
+    this.setState({ searchTerm: e.target.value });
   }
 
   dynamicSearch() {
     return this.state.names.filter(
       (name) => name.toLowerCase()
-        .includes(this.state.searchTerm.toLowerCase()),
+        .includes(this.state.searchTerm.toString().toLowerCase()),
     );
   }
 
