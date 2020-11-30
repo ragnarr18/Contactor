@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, Image, TouchableHighlight } from 'react-native';
+import {
+  View, Text, Image, TouchableHighlight,
+} from 'react-native';
 import PropTypes from 'prop-types';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
 import styles from './styles';
@@ -14,7 +16,8 @@ class ContactListItem extends React.Component {
     // const { item } = this.props;
     const call = require('../../images/call.png');
     const info = require('../../images/information.png');
-    const { name, phone } = this.props;
+    const { name, phone, navigation } = this.props;
+    const { navigate } = navigation;
     return (
       <Collapse style={styles.contactContainer}>
         <CollapseHeader>
@@ -30,13 +33,13 @@ class ContactListItem extends React.Component {
             <TouchableHighlight>
               <Image style={styles.icon} source={call} />
             </TouchableHighlight>
-            <TouchableHighlight>
+            <TouchableHighlight onPress={() => navigate('ContactInfo', { name, phone, image: 'image' })}>
               <Image style={styles.icon} source={info} />
             </TouchableHighlight>
           </View>
         </CollapseBody>
       </Collapse>
-    )
+    );
   }
 }
 
@@ -54,6 +57,6 @@ ContactListItem.propTypes = {
 */
 ContactListItem.defaultProps = {
   phone: PropTypes.string = 'missing phone number',
-}
+};
 
 export default ContactListItem;
