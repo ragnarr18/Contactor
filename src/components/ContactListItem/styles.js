@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+const WIDTH = Math.round(Dimensions.get('window').width);
 
 export default StyleSheet.create({
   contactContainer: {
@@ -19,7 +20,10 @@ export default StyleSheet.create({
     width: 70,
   },
   iconRow: {
-    flex: 1,
+    backgroundColor: "#aaaaaa",
+    width: WIDTH,
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'space-around',
   },
 });

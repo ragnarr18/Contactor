@@ -28,8 +28,7 @@ class ContactListContainer extends React.Component {
     return (
       <View>
         <View>
-          {this.props.names.map((name) => <ContactListItem name={name} />)}
-          <ContactListItem navigation={navigation} />
+          {this.props.names.map((name) => <ContactListItem navigation={navigation} name={name} />)}
         </View>
       </View>
     );
