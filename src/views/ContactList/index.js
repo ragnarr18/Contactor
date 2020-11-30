@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import PropTypes from 'prop-types';
 import ContactListContainer from '../../components/ContactListContainer';
 import styles from './styles';
@@ -43,7 +43,7 @@ class ContactList extends React.Component {
         <View styles={styles.bottomBorder}>
           <Text style={styles.header}>HEADER</Text>
           <View>
-            <input
+            <TextInput
               type="text"
               value={this.state.searchTerm}
               onChange={this.editSearchTerm}
