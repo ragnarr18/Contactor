@@ -1,7 +1,7 @@
 {
-  "user":
+  "users":
   [
-    "John Doe",
-    "Jane Dó"
+    {"name":"John Doe" ,"fileName" : "test0001.json"},
+    {"name":"John Dó" ,"fileName" : "test0002.json"}
   ]
 }

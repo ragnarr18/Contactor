@@ -2,10 +2,9 @@ import React from 'react';
 import { View, Text, Button } from 'react-native';
 // import userService from '../../services/userService'; (this is the image that we Need)
 import User from '../../components/User';
-// import UserTaskBar from '../../components/UserTaskBar';
-// import UserModal from '../../modals/UserModal';
+import UserModal from '../../components/UserModal';
 
-class UserInfo extends React.Component {
+class ContactInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,15 +25,17 @@ class UserInfo extends React.Component {
 
     return (
       <View>
-        {/* <Text>{userId}</Text> */}
         <User name={name} phoneNumber={phoneNumber} />
-        <Button onPress={this.setState({ isEditModalOpen: true })} />
-        {isEditModalOpen}
-        <Text>call button</Text>
-        {/* userModal isOpen={isEditModalOpen} */}
+        <Button title="Edit" onPress={this.setState({ isEditModalOpen: true })} />
+        <Text>dial button</Text>
+        <UserModal
+          isOpen={isEditModalOpen}
+          isCreate={false}
+          closeModal={() => this.setState({ isEditModalOpen: false })}
+        />
       </View>
     );
   }
 }
 
-export default UserInfo;
+export default ContactInfo;
