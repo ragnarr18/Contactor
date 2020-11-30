@@ -1,5 +1,5 @@
-# theToddler
-the Toddler, a react-native project in app development
+# the Contactor
+the Contactor, a react-native project in app development
 
 rules of engagement
   to run program: cd /Contactor/ and run npm start
