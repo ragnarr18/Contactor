@@ -12,7 +12,7 @@ class ContactListItem extends React.Component {
       <View>
         <Text>General Kenobi!</Text>
       </View>
-    )
+    );
   }
 }
 

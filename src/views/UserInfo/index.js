@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 // import userService from '../../services/userService'; (this is the image that we Need)
 import User from '../../components/User';
-import UserTaskBar from '../../components/UserTaskBar';
+// import UserTaskBar from '../../components/UserTaskBar';
 // import UserModal from '../../modals/UserModal';
 
 class UserInfo extends React.Component {
@@ -18,8 +18,8 @@ class UserInfo extends React.Component {
   }
 
   render() {
-    // const { navigation } = this.props;
-    // const { userId } = this.navigation.state.params;
+    const { navigation } = this.props;
+    const { userFileName } = this.navigation.state.params;
     const {
       image, name, phoneNumber, isEditModalOpen,
     } = this.state;
@@ -27,8 +27,8 @@ class UserInfo extends React.Component {
     return (
       <View>
         {/* <Text>{userId}</Text> */}
-        {/* <User name={name} phoneNumber={phoneNumber} />
-        <UserTaskBar onEdit={this.setState({ isEditModalOpen: true })} /> */}
+        <User name={name} phoneNumber={phoneNumber} />
+        <Button onPress={this.setState({ isEditModalOpen: true })} />
         {isEditModalOpen}
         <Text>call button</Text>
         {/* userModal isOpen={isEditModalOpen} */}

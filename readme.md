@@ -4,6 +4,7 @@ the Contactor, a react-native project in app development
 rules of engagement
   to run program: cd /Contactor/ and run npm start
   to run eslint:  npm run lint
+  app is developed and tested using the android Expo app
 
 contributers:
 
