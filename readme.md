@@ -27,3 +27,8 @@ uppskiptun verkefna:
 
      all:  File-system setup, extras
             extrax: import contacts, add image with camera or photo import, user can use it to call someone
+
+
+Ragnar note:
+  - create is a modal
+  - edit/modify is navigated => a view that has components

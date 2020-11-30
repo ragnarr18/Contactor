@@ -1,10 +1,10 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import ContactList from '../views/Main/index';
+import UserInfo from '../views/UserInfo';
 
 const StackNavigator = createStackNavigator({
-  ContactList,
+  UserInfo,
 });
 
 export default createAppContainer(StackNavigator);
