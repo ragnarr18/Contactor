@@ -10,15 +10,7 @@ class ContactList extends React.Component {
     this.state = {
       names: [
         'John',
-        'Abigail',
-        'X Æ A-Xii',
-        'Beyonce',
-        'Khloe Kardashian',
-        'George Bush',
-        'Queen Elizabeth',
-        'Yeezy',
-        'Ivanka Trump',
-        'Leonardo DiCaprio',
+        'Sally',
       ],
       searchTerm: '',
     };

@@ -21,8 +21,8 @@ class ContactListContainer extends React.Component {
     contacts.forEach((item) => (
       contactArray.push(
         <View>
-          <ContactListItem item={item} />
-        </View>,
+          {this.props.names.map((name) => <ContactListItem item={item} />)}
+        </View>
       )));
 
     return (
