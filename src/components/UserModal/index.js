@@ -14,10 +14,10 @@ class EditUser extends React.Component {
 
   render() {
     const {
-      image, name, phoneNumber, isCreate,
+      image, name, phoneNumber, isCreate, isOpen, closeModal,
     } = this.props;
     return (
-      <Modal>
+      <Modal isOpen={isOpen} closeModal={closeModal}>
         <Text>show image here</Text>
         <Text>upload button here</Text>
         <Text>Name: </Text>
