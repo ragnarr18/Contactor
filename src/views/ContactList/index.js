@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, TextInput, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import ContactListContainer from '../../components/ContactListContainer';
 import styles from './styles';
@@ -10,15 +10,7 @@ class ContactList extends React.Component {
     this.state = {
       names: [
         'John',
-        'Abigail',
-        'X Æ A-Xii',
-        'Beyonce',
-        'Khloe Kardashian',
-        'George Bush',
-        'Queen Elizabeth',
-        'Yeezy',
-        'Ivanka Trump',
-        'Leonardo DiCaprio',
+        'Sally',
       ],
       searchTerm: '',
     };
@@ -42,7 +34,7 @@ class ContactList extends React.Component {
       <View>
         <View styles={styles.bottomBorder}>
           <Text style={styles.header}>HEADER</Text>
-          <input
+          <TextInput
             type="text"
             value={this.state.searchTerm}
             onChange={this.editSearchTerm}
