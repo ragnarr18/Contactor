@@ -1,6 +1,7 @@
 {
   "user":
   [
-    {"John Doe": "test0001"}
+    "John Doe",
+    "Jane Dó"
   ]
 }
