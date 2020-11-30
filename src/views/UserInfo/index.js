@@ -4,7 +4,7 @@ import { View, Text, Button } from 'react-native';
 import User from '../../components/User';
 import UserModal from '../../components/UserModal';
 
-class UserInfo extends React.Component {
+class ContactInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,4 +38,4 @@ class UserInfo extends React.Component {
   }
 }
 
-export default UserInfo;
+export default ContactInfo;
