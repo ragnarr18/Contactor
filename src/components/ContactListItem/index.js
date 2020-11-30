@@ -10,7 +10,7 @@ class ContactListItem extends React.Component {
   render() {
     return (
       <View>
-        <Text>General Kenobi!</Text>
+        {this.props.name}
       </View>
     );
   }
