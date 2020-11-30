@@ -16,8 +16,9 @@ class ContactListItem extends React.Component {
     // const { item } = this.props;
     const call = require('../../images/call.png');
     const info = require('../../images/information.png');
-    const { name, phone, navigation } = this.props;
+    const { contact, phone, navigation } = this.props;
     const { navigate } = navigation;
+    // { console.log(contact) }
     return (
       <Collapse style={styles.contactContainer}>
         <CollapseHeader>
@@ -33,7 +34,7 @@ class ContactListItem extends React.Component {
             <TouchableHighlight>
               <Image style={styles.icon} source={call} />
             </TouchableHighlight>
-            <TouchableHighlight onPress={() => navigate('ContactInfo', { name, phone, image: 'image' })}>
+            <TouchableHighlight onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
               <Image style={styles.icon} source={info} />
             </TouchableHighlight>
           </View>
