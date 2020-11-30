@@ -6,8 +6,11 @@ rules of engagement
   to run eslint:  npm run lint
 
 contributers:
+
   arnarp18:  Arnar Snær Pálsson
+
   bjarnib18: Bjarni Berg Björgvinsson
+
   ragnarr18: Ragnar Geir Ragnarsson
 
 feats:
