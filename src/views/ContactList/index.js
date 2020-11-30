@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, Text } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import PropTypes from 'prop-types';
 import ContactListContainer from '../../components/ContactListContainer';
 import styles from './styles';
@@ -34,12 +34,14 @@ class ContactList extends React.Component {
       <View>
         <View styles={styles.bottomBorder}>
           <Text style={styles.header}>HEADER</Text>
-          <TextInput
-            type="text"
-            value={this.state.searchTerm}
-            onChange={this.editSearchTerm}
-            placeholder="Search for a contact!"
-          />
+          <View>
+            <TextInput
+              type="text"
+              value={this.state.searchTerm}
+              onChange={this.editSearchTerm}
+              placeholder="Search for a contact!"
+            />
+          </View>
         </View>
         <ContactListContainer
           navigation={navigation}
