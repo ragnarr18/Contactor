@@ -11,6 +11,8 @@ class ContactListItem extends React.Component {
   }
 
   render() {
+    // sendir áfram object með öllum upplýsingum um einn contact...
+
     // const { item } = this.props;
     const call = require('../../images/call.png');
     const info = require('../../images/information.png');

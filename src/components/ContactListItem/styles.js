@@ -15,11 +15,11 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
   icon: {
-    height: 100,
-    width: 100,
+    height: 70,
+    width: 70,
   },
   iconRow: {
+    flex: 1,
     flexDirection: 'row',
-    alignContent: 'space-between',
   },
 });
