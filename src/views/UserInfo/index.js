@@ -30,7 +30,7 @@ class UserInfo extends React.Component {
         {/* <User name={name} phoneNumber={phoneNumber} />
         <UserTaskBar onEdit={this.setState({ isEditModalOpen: true })} /> */}
         {isEditModalOpen}
-        call button
+        <Text>call button</Text>
         {/* userModal isOpen={isEditModalOpen} */}
       </View>
     );

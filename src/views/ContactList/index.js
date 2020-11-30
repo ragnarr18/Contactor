@@ -11,10 +11,10 @@ class ContactList extends React.Component {
   }
 
   render() {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     return (
       <View>
-        <View>
+        <View styles={styles.bottomBorder}>
           <Text style={styles.header}>HEADER</Text>
         </View>
         <ContactListContainer navigation={navigation} />
