@@ -5,9 +5,35 @@ import ContactListContainer from '../../components/ContactListContainer';
 import styles from './styles';
 
 class ContactList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      names: [
+        'John',
+        'Abigail',
+        'X Æ A-Xii',
+        'Beyonce',
+        'Khloe Kardashian',
+        'George Bush',
+        'Queen Elizabeth',
+        'Yeezy',
+        'Ivanka Trump',
+        'Leonardo DiCaprio',
+      ],
+      searchTerm: '',
+    };
+    this.editSearchTerm = this.editSearchTerm.bind(this);
+  }
+
+  editSearchTerm(e) {
+    this.setState({ searchTerm: e.target.value });
+  }
+
+  dynamicSearch() {
+    return this.state.names.filter(
+      (name) => name.toLowerCase()
+        .includes(this.state.searchTerm.toLowerCase()),
+    );
   }
 
   render() {
@@ -16,8 +42,17 @@ class ContactList extends React.Component {
       <View>
         <View styles={styles.bottomBorder}>
           <Text style={styles.header}>HEADER</Text>
+          <input
+            type="text"
+            value={this.state.searchTerm}
+            onChange={this.editSearchTerm}
+            placeholder="Search for a contact!"
+          />
         </View>
-        <ContactListContainer navigation={navigation} />
+        <ContactListContainer
+          navigation={navigation}
+          names={this.dynamicSearch()}
+        />
       </View>
     );
   }
