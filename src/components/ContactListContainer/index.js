@@ -1,19 +1,28 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import PropTypes from 'prop-types';
+import ContactListItem from '../ContactListItem';
 
 class ContactListContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <View>
-        <Text>There</Text>
+        <ContactListItem navigation={navigation} />
       </View>
-    )
+    );
   }
 }
+
+ContactListContainer.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default ContactListContainer;

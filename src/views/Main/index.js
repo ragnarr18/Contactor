@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import ContactListContainer from '../../components/ContactListContainer';
+import styles from './styles';
 
 class ContactList extends React.Component {
   constructor(props) {
@@ -9,9 +11,13 @@ class ContactList extends React.Component {
   }
 
   render() {
+    const {navigation} = this.props;
     return (
       <View>
-        <Text>Hello</Text>
+        <View>
+          <Text style={styles.header}>HEADER</Text>
+        </View>
+        <ContactListContainer navigation={navigation} />
       </View>
     );
   }
