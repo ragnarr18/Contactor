@@ -25,7 +25,7 @@ class ContactListContainer extends React.Component {
     //     <View>
     //       {this.props.names.map((name) => <ContactListItem item={item} />)}
     //     </View>,
-      // )));
+    // )));
 
     return (
       <View>
