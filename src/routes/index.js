@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import UserInfo from '../views/UserInfo';
 
 const StackNavigator = createStackNavigator({
-  UserInfo
+  UserInfo,
 });
 
 export default createAppContainer(StackNavigator);

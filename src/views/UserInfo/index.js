@@ -18,19 +18,20 @@ class UserInfo extends React.Component {
   }
 
   render() {
-    const { navigation } = this.props;
-    const { userId } = this.navigation.state.params;
+    // const { navigation } = this.props;
+    // const { userId } = this.navigation.state.params;
     const {
       image, name, phoneNumber, isEditModalOpen,
     } = this.state;
 
     return (
       <View>
-        <Text>{userId}</Text>
-        <User name={name} phoneNumber={phoneNumber} />
-        <UserTaskBar onEdit={this.setState({ isEditModalOpen: true })} />
+        {/* <Text>{userId}</Text> */}
+        {/* <User name={name} phoneNumber={phoneNumber} />
+        <UserTaskBar onEdit={this.setState({ isEditModalOpen: true })} /> */}
+        {isEditModalOpen}
         call button
-        userModal isOpen={isEditModalOpen}
+        {/* userModal isOpen={isEditModalOpen} */}
       </View>
     );
   }
