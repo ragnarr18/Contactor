@@ -18,7 +18,7 @@ class ContactListItem extends React.Component {
     // const { item } = this.props;
     const call = require('../../images/call.png');
     const info = require('../../images/information.png');
-    const { contact, phone, navigation } = this.props;
+    const { name, contact, phone, navigation } = this.props;
     const { navigate } = navigation;
     // { console.log(contact) }
     return (
@@ -35,7 +35,12 @@ class ContactListItem extends React.Component {
             </Text>
           </View>
           <View styles={styles.iconRow}>
-            <TouchableHighlight style={styles.icon} onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })} />
+            <TouchableHighlight style={styles.icon}>
+              <Image style={styles.icon} source={call} />
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.icon} onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
+              <Image style={styles.icon} source={info} />
+            </TouchableHighlight>
           </View>
         </CollapseBody>
       </Collapse>

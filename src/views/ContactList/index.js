@@ -18,15 +18,18 @@ class ContactList extends React.Component {
     this.editSearchTerm = this.editSearchTerm.bind(this);
   }
 
-  editSearchTerm(e) {
-    this.setState({ searchTerm: e.target.value });
+  editSearchTerm(text) {
+    console.log({ text });
+    this.setState({ searchTerm: text.target.value });
   }
 
   dynamicSearch() {
-    return this.state.names.filter(
+    const things = this.state.names.filter(
       (name) => name.toLowerCase()
         .includes(this.state.searchTerm.toString().toLowerCase()),
     );
+    console.log(things);
+    return things;
   }
 
   render() {
