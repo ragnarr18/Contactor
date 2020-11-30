@@ -17,19 +17,20 @@ class ContactListContainer extends React.Component {
     ];
     console.log(contacts);
     const contactArray = [];
+
     contacts.forEach((item) => (
       contactArray.push(
         <View>
           {this.props.names.map((name) => <ContactListItem item={item} />)}
         </View>
       )));
+
     return (
-      /* {this.props.names.map((name) => <ContactListItem name={name} />)}
       <View>
-        <ContactListItem navigation={navigation} />
-      </View> */
-      <View>
-        { contactArray }
+        <View>
+          {this.props.names.map((name) => <ContactListItem name={name} />)}
+          <ContactListItem navigation={navigation} />
+        </View>
       </View>
     );
   }
@@ -41,4 +42,6 @@ ContactListContainer.propTypes = {
   }).isRequired,
 };
 */
+
+
 export default ContactListContainer;
