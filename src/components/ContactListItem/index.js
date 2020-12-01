@@ -23,13 +23,13 @@ class ContactListItem extends React.Component {
     } = this.props;
     const { navigate } = navigation;
 
-    console.log('image path is "', image, '"');
     return (
       <Collapse style={styles.contactContainer}>
         <CollapseHeader>
-          <View>
-            <Image style={styles.icon} source={{ uri: image }} />
-          </View>
+          <Image
+            style={styles.icon}
+            source={{ uri: image }}
+          />
           <Text style={styles.name}>
             {name}
           </Text>
@@ -79,6 +79,9 @@ ContactListItem.propTypes = {
   image: PropTypes.string,
   phone: PropTypes.string,
   name: PropTypes.string.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default ContactListItem;
