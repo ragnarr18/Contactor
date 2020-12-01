@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 
 class ContactListItem extends React.Component {
@@ -23,12 +24,16 @@ class ContactListItem extends React.Component {
     } = this.props;
     const { navigate } = navigation;
 
-    console.log('image path is "', image, '"');
+    console.log(image);
     return (
       <Collapse style={styles.contactContainer}>
         <CollapseHeader>
           <View>
-            <Image style={styles.icon} source={{ uri: image }} />
+            <Image
+              style={styles.icon}
+              resizeMode="cover"
+              source={{ uri: image }}
+            />
           </View>
           <Text style={styles.name}>
             {name}
@@ -72,7 +77,7 @@ ContactListItem.propTypes = {
 */
 ContactListItem.defaultProps = {
   phone: PropTypes.string = 'missing phone number',
-  image: PropTypes.string = '../../images/icon.png',
+  image: PropTypes.string = 'https://i.redd.it/yvq5a4xboh931.png',
 };
 
 ContactListItem.propTypes = {

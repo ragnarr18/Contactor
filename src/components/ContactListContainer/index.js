@@ -11,7 +11,7 @@ class ContactListContainer extends React.Component {
   }
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, image } = this.props;
     // const contacts = [
     //   { name: 'John', phone: '581-2345', image: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-contact-512.png' },
     //   { name: 'Sally', phone: '500-8000', image: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-contact-512.png' },
@@ -30,7 +30,13 @@ class ContactListContainer extends React.Component {
     return (
       <View>
         <View>
-          {this.props.names.map((name) => <ContactListItem name={name} navigation={navigation} />)}
+          {this.props.names.map((name) => (
+            <ContactListItem
+              name={name}
+              image={image}
+              navigation={navigation}
+            />
+          ))}
         </View>
       </View>
     );
