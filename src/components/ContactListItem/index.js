@@ -18,7 +18,9 @@ class ContactListItem extends React.Component {
     // const { item } = this.props;
     const call = require('../../images/call.png');
     const info = require('../../images/information.png');
-    const { name, contact, phone, navigation } = this.props;
+    const {
+      name, contact, phone, navigation,
+    } = this.props;
     const { navigate } = navigation;
     // { console.log(contact) }
     return (

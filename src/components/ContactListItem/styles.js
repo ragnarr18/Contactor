@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+
 const WIDTH = Math.round(Dimensions.get('window').width);
 
 export default StyleSheet.create({
