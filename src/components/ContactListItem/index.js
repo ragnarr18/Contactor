@@ -35,10 +35,10 @@ class ContactListItem extends React.Component {
               resizeMode="cover"
               source={{ uri: image }}
             />
+            <Text style={styles.name}>
+              {name}
+            </Text>
           </View>
-          <Text style={styles.name}>
-            {name}
-          </Text>
         </CollapseHeader>
         <CollapseBody>
           <View>

@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import ContactListItem from '../ContactListItem';
+// import ContactServices from '../../services/ContactServices';
 import ContactServices from '../../services/ContactServices';
 
 class ContactListContainer extends React.Component {

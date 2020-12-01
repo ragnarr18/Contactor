@@ -2,6 +2,6 @@
   "users":
   [
     {"name":"John Doe" ,"fileName" : "test0001.json"},
-    {"name":"John Dó" ,"fileName" : "test0002.json"}
+    {"name":"Jane Doe" ,"fileName" : "test0002.json"}
   ]
 }
