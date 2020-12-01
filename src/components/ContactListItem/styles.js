@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+
 const WIDTH = Math.round(Dimensions.get('window').width);
 
 export default StyleSheet.create({
@@ -20,13 +21,12 @@ export default StyleSheet.create({
     width: 70,
   },
   iconRow: {
-    flex: 1,
-    display: 'flex',
-    flexWrap: 'wrap',
-    // backgroundColor: "#aaaaaa",
-    // width: WIDTH,
-    // flexDirection: 'row',
-    // justifyContent: 'center',
-    // alignContent: 'space-around',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'space-around',
+    borderWidth: 1,
+  },
+  iconRowItem: {
+    flexDirection: 'row',
   },
 });

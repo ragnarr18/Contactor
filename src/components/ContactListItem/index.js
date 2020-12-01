@@ -26,6 +26,9 @@ class ContactListItem extends React.Component {
     return (
       <Collapse style={styles.contactContainer}>
         <CollapseHeader>
+          <View>
+            <Image source={require('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-contact-512.png')} />
+          </View>
           <Text style={styles.name}>
             {name}
           </Text>
@@ -37,17 +40,16 @@ class ContactListItem extends React.Component {
             </Text>
           </View>
           <View styles={styles.iconRow}>
-            <TouchableHighlight style={styles.icon}>
-              <Image style={styles.icon} source={call} />
-            </TouchableHighlight>
-            <TouchableHighlight
-              style={styles.icon}
-              onPress={() => navigate(
-                'ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' },
-              )}
-            >
-              <Image style={styles.icon} source={info} />
-            </TouchableHighlight>
+            <View style={styles.iconRowItem}>
+              <TouchableHighlight>
+                <Image style={styles.icon} source={call} />
+              </TouchableHighlight>
+            </View>
+            <View style={styles.iconRowItem}>
+              <TouchableHighlight onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
+                <Image style={styles.icon} source={info} />
+              </TouchableHighlight>
+            </View>
           </View>
         </CollapseBody>
       </Collapse>
