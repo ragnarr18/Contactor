@@ -19,15 +19,16 @@ class ContactListItem extends React.Component {
     const call = require('../../images/call.png');
     const info = require('../../images/information.png');
     const {
-      name, contact, phone, navigation,
+      name, image, phone, navigation,
     } = this.props;
     const { navigate } = navigation;
-    // { console.log(contact) }
+
+    console.log('image path is "', image, '"');
     return (
       <Collapse style={styles.contactContainer}>
         <CollapseHeader>
           <View>
-            <Image source={require('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-contact-512.png')} />
+            <Image style={styles.icon} source={{ uri: image }} />
           </View>
           <Text style={styles.name}>
             {name}
@@ -72,6 +73,12 @@ ContactListItem.propTypes = {
 ContactListItem.defaultProps = {
   phone: PropTypes.string = 'missing phone number',
   image: PropTypes.string = '../../images/icon.png',
+};
+
+ContactListItem.propTypes = {
+  image: PropTypes.string,
+  phone: PropTypes.string,
+  name: PropTypes.string.isRequired,
 };
 
 export default ContactListItem;
