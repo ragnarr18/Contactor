@@ -20,10 +20,13 @@ export default StyleSheet.create({
     width: 70,
   },
   iconRow: {
-    backgroundColor: "#aaaaaa",
-    width: WIDTH,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignContent: 'space-around',
+    flex: 1,
+    display: 'flex',
+    flexWrap: 'wrap',
+    // backgroundColor: "#aaaaaa",
+    // width: WIDTH,
+    // flexDirection: 'row',
+    // justifyContent: 'center',
+    // alignContent: 'space-around',
   },
 });

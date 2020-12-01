@@ -35,7 +35,7 @@ class ContactList extends React.Component {
     return (
       <View>
         <View styles={styles.bottomBorder}>
-          <Text style={styles.header}>HEADER</Text>
+          <Text style={styles.header}>ALL CONTACTS</Text>
           <SearchBar
             round
             value={this.state.searchTerm}
