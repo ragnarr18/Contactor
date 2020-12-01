@@ -69,6 +69,7 @@ ContactListItem.propTypes = {
 */
 ContactListItem.defaultProps = {
   phone: PropTypes.string = 'missing phone number',
+  image: PropTypes.string = '../../images/icon.png',
 };
 
 export default ContactListItem;
