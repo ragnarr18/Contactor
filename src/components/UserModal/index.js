@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import {
-  TextInput, Text, Button, TouchableOpacity,
+  TextInput, Text, Button, TouchableOpacity, Image,
 } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import Modal from '../../modals/UserModal';
@@ -21,31 +21,32 @@ class EditUser extends React.Component {
 
   async takePhoto() {
     const photo = await imageServices.takePhoto();
-    console.log("takePhoto", photo.length);
+    console.log('takePhoto', photo.length);
     if (photo.length > 0) {
       await this.addImage(photo);
     }
   }
 
   async addImage(imageLocation) {
-    this.setState({loadingImage: true}) //spinning wheel mechanic
-    console.log("addimg")
+    this.setState({ loadingImage: true }); // spinning wheel mechanic
+    console.log('addimg');
     const newImage = await fileServices.addImage(imageLocation);
-    console.log("after addimg")
+    console.log('newImage', newImage);
 
-    // const createdImage = await fileServices.getImage(imageLocation);
+    const createdImage = await fileServices.getImage(imageLocation);
     // console.log(createdImage);
-    this.setState({ image: newImage, loadImage: false });
+    this.setState({ image: newImage, loadImage: false, cameraPhotoReady: true });
     // isModalOpen : false
   }
 
   render() {
     const {
-      image, name, phoneNumber, isCreate, isOpen, closeModal,
+      image, name, phoneNumber, isCreate, isOpen, closeModal, setImage
     } = this.props;
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
-        <Text>show image here</Text>
+        {this.state.cameraPhotoReady
+          && (<Image style={{width: 100, height: 50, borderWidth: 1, borderColor: 'red'}} source={{uri: `data:image/jpeg;base64,${this.state.image.file}`}}/>)}
         <TouchableOpacity onPress={() => this.takePhoto()}>
           <Entypo name="camera" style={Styles.icons} />
         </TouchableOpacity>

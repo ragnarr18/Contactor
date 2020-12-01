@@ -8,7 +8,7 @@ class ContactInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: '', name: '', phoneNumber: '', isEditModalOpen: false,
+      image: '', name: '', phoneNumber: '', isEditModalOpen: false, photoReady: false
     };
   }
 
@@ -21,18 +21,19 @@ class ContactInfo extends React.Component {
     const { navigation } = this.props;
     const { userFileName } = navigation.state.params;
     const {
-      image, name, phoneNumber, isEditModalOpen,
+      image, name, phoneNumber, isEditModalOpen, photoReady
     } = this.state;
 
     return (
       <View>
-        <User name={name} phoneNumber={phoneNumber} />
+        <User name={name} phoneNumber={phoneNumber} image={image} photoReady={photoReady} />
         <Button title="Edit" onPress={() => this.setState({ isEditModalOpen: true })} />
         <Text>dial button</Text>
         <UserModal
           isOpen={isEditModalOpen}
           isCreate={false}
           closeModal={() => this.setState({ isEditModalOpen: false })}
+          setImage={(currentImage) => this.setState({ image: currentImage, photoReady: true })}
         />
       </View>
     );
