@@ -2,23 +2,33 @@ import FileSystem from 'expo-file-system';
 import data from '../../resources/USERS.json';
 
 const { users } = data;
+const directory = '../../resources/contacts/';
 
-function getContactsByName(name) {
+async function getContactsByName(name) {
   const contacts = [];
-  const contactsInfo = []
+  const contactsInfo = [];
+
+  // get filenames
   for (let i = 0; i < users.length; i++) {
     if (users[i].name === name) {
       contacts.push(users[i].fileName);
-      console.log(users[i].fileName);
     }
   }
-  contacts.forEach((user) => {
-    contactsInfo.push(
-      require(`${user}`),
-    );
+
+  // get data from files
+  console.log(directory + contacts[0]);
+  return contacts.forEach((user) => {
+    try {
+      FileSystem.readAsStringAsync(`file://${directory}${user}`)
+        .then((res) => res.json())
+        .then((json) => contactsInfo.push(json))
+    } catch (e) {
+      console.log("couldn't find file: ", e);
+    }
   });
-  // for x in contacts get their info and push into contactsInfo
-  return contactsInfo;
+
+  // console.log('size', contactsInfo.size());
+  // return contactsInfo;
 }
 
 export default getContactsByName;

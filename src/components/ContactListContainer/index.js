@@ -20,7 +20,8 @@ class ContactListContainer extends React.Component {
     //   { name: 'Sally', phone: '500-8000', image: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-contact-512.png' },
     // ];
     // console.log(contacts);
-    console.log(ContactServices.getContactsByName('John Doe'));
+    console.log('running function...');
+    ContactServices.getContactsByName('John Doe').then((res) => console.log(res));
     // const contactArray = [];
 
     // contacts.forEach((item) => (
@@ -35,6 +36,7 @@ class ContactListContainer extends React.Component {
         <View>
           {this.props.names.map((name) => (
             <ContactListItem
+              key={name}
               name={name}
               image={image}
               navigation={navigation}

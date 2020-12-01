@@ -33,7 +33,8 @@ class ContactListItem extends React.Component {
             <Image
               style={styles.icon}
               resizeMode="cover"
-              source={{ uri: image }}
+              source={icon}
+              alt={icon}
             />
             <Text style={styles.name}>
               {name}
