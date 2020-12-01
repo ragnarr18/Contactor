@@ -18,58 +18,52 @@ class ContactListItem extends React.Component {
     // const { item } = this.props;
     const call = require('../../images/call.png');
     const info = require('../../images/information.png');
+    const icon = require('../../images/icon.png');
     const {
       name, image, phone, navigation,
     } = this.props;
     const { navigate } = navigation;
-
+    const path = `${image}`;
     return (
-      <Collapse style={styles.contactContainer}>
-        <CollapseHeader>
-          <Image
-            style={styles.icon}
-            source={{ uri: image }}
-          />
-          <Text style={styles.name}>
-            {name}
-          </Text>
-        </CollapseHeader>
-        <CollapseBody>
-          <View>
-            <Text style={styles.phoneNumber}>
-              {phone}
+      <View>
+        <Image
+          style={{ height: 100, width: 100 }}
+          // source={require(`${image}`)}
+          source={icon}
+          alt={icon}
+        />
+        <Collapse style={styles.contactContainer}>
+          <CollapseHeader>
+
+            <Text style={styles.name}>
+              {name}
             </Text>
-          </View>
-          <View styles={styles.iconRow}>
-            <View style={styles.iconRowItem}>
-              <TouchableHighlight>
-                <Image style={styles.icon} source={call} />
-              </TouchableHighlight>
+          </CollapseHeader>
+          <CollapseBody>
+            <View>
+              <Text style={styles.phoneNumber}>
+                {phone}
+              </Text>
             </View>
-            <View style={styles.iconRowItem}>
-              <TouchableHighlight onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
-                <Image style={styles.icon} source={info} />
-              </TouchableHighlight>
+            <View styles={styles.iconRow}>
+              <View style={styles.iconRowItem}>
+                <TouchableHighlight>
+                  <Image style={styles.icon} source={call} />
+                </TouchableHighlight>
+              </View>
+              <View style={styles.iconRowItem}>
+                <TouchableHighlight onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
+                  <Image style={styles.icon} source={info} />
+                </TouchableHighlight>
+              </View>
             </View>
-          </View>
-        </CollapseBody>
-      </Collapse>
+          </CollapseBody>
+        </Collapse>
+      </View>
     );
   }
 }
 
-/*
-ContactListItem.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-  }).isRequired,
-  contact: PropTypes.objectOf(PropTypes.any).shape({
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-  }).isRequired,
-}
-*/
 ContactListItem.defaultProps = {
   phone: PropTypes.string = 'missing phone number',
   image: PropTypes.string = '../../images/icon.png',
