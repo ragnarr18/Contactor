@@ -17,16 +17,17 @@ class ContactInfo extends React.Component {
   }
 
   render() {
+    // console.log("made it")
     const { navigation } = this.props;
-    const { userFileName } = this.navigation.state.params;
+    const { userFileName } = navigation.state.params;
     const {
       image, name, phoneNumber, isEditModalOpen,
     } = this.state;
 
     return (
       <View>
-        <User name={name} phoneNumber={phoneNumber} />
-        <Button title="Edit" onPress={this.setState({ isEditModalOpen: true })} />
+        {/* <User name={name} phoneNumber={phoneNumber} /> */}
+        <Button title="Edit" onPress={() => this.setState({ isEditModalOpen: true })} />
         <Text>dial button</Text>
         <UserModal
           isOpen={isEditModalOpen}
