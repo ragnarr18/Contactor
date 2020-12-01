@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { PropTypes } from 'prop-types';
 
 class User extends React.Component {
@@ -12,8 +12,8 @@ class User extends React.Component {
     const { name, phoneNumber } = this.props;
     return (
       <View>
-        {name}
-        {phoneNumber}
+        <Text>{name}</Text>
+        <Text>{phoneNumber}</Text>
       </View>
     );
   }
@@ -21,7 +21,7 @@ class User extends React.Component {
 
 User.propTypes = {
   name: PropTypes.string.isRequired,
-  phoneNumber: PropTypes.number.isRequired,
+  phoneNumber: PropTypes.string.isRequired,
 };
 
 export default User;
