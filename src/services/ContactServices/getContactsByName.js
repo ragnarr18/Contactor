@@ -1,3 +1,4 @@
+import FileSystem from 'expo-file-system';
 import data from '../../resources/USERS.json';
 
 const { users } = data;
@@ -11,7 +12,13 @@ function getContactsByName(name) {
       console.log(users[i].fileName);
     }
   }
-  //for x in contacts get their info and push into contactsInfo
-  return [];
+  contacts.forEach((user) => {
+    contactsInfo.push(
+      require(`${user}`),
+    );
+  });
+  // for x in contacts get their info and push into contactsInfo
+  return contactsInfo;
 }
+
 export default getContactsByName;

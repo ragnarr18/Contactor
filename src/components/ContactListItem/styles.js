@@ -17,8 +17,8 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
   icon: {
-    height: 70,
-    width: 70,
+    height: 30,
+    width: 30,
   },
   iconRow: {
     flexDirection: 'row',

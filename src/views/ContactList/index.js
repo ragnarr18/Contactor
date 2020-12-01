@@ -32,6 +32,7 @@ class ContactList extends React.Component {
 
   render() {
     const { navigation } = this.props;
+    const { image } = 'https://i.redd.it/yvq5a4xboh931.png';
     return (
       <View>
         <View styles={styles.bottomBorder}>
@@ -47,6 +48,7 @@ class ContactList extends React.Component {
         <ContactListContainer
           navigation={navigation}
           names={this.dynamicSearch()}
+          image={image}
         />
       </View>
     );

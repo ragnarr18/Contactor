@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 
 class ContactListItem extends React.Component {
@@ -18,21 +19,26 @@ class ContactListItem extends React.Component {
     // const { item } = this.props;
     const call = require('../../images/call.png');
     const info = require('../../images/information.png');
+    const icon = require('../../images/icon.png');
     const {
       name, image, phone, navigation,
     } = this.props;
     const { navigate } = navigation;
 
+    console.log(image);
     return (
       <Collapse style={styles.contactContainer}>
         <CollapseHeader>
-          <Image
-            style={styles.icon}
-            source={{ uri: image }}
-          />
-          <Text style={styles.name}>
-            {name}
-          </Text>
+          <View>
+            <Image
+              style={styles.icon}
+              resizeMode="cover"
+              source={{ uri: image }}
+            />
+            <Text style={styles.name}>
+              {name}
+            </Text>
+          </View>
         </CollapseHeader>
         <CollapseBody>
           <View>
@@ -58,21 +64,9 @@ class ContactListItem extends React.Component {
   }
 }
 
-/*
-ContactListItem.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-  }).isRequired,
-  contact: PropTypes.objectOf(PropTypes.any).shape({
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-  }).isRequired,
-}
-*/
 ContactListItem.defaultProps = {
   phone: PropTypes.string = 'missing phone number',
-  image: PropTypes.string = '../../images/icon.png',
+  image: PropTypes.string = 'https://i.redd.it/yvq5a4xboh931.png',
 };
 
 ContactListItem.propTypes = {
