@@ -20,10 +20,12 @@ export default StyleSheet.create({
     width: 70,
   },
   iconRow: {
-    backgroundColor: "#aaaaaa",
-    width: WIDTH,
     flexDirection: 'row',
     justifyContent: 'center',
     alignContent: 'space-around',
+    borderWidth: 1,
+  },
+  iconRowItem: {
+    flexDirection: 'row',
   },
 });
