@@ -84,6 +84,9 @@ ContactListItem.propTypes = {
   image: PropTypes.string,
   phone: PropTypes.string,
   name: PropTypes.string.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default ContactListItem;
