@@ -45,28 +45,21 @@ class ContactListItem extends React.Component {
             <Text style={styles.phoneNumber}>
               {phone}
             </Text>
-          </CollapseHeader>
-          <CollapseBody>
-            <View>
-              <Text style={styles.phoneNumber}>
-                {phone}
-              </Text>
+          </View>
+          <View styles={styles.iconRow}>
+            <View style={styles.iconRowItem}>
+              <TouchableHighlight>
+                <Image style={styles.icon} source={call} />
+              </TouchableHighlight>
             </View>
-            <View styles={styles.iconRow}>
-              <View style={styles.iconRowItem}>
-                <TouchableHighlight>
-                  <Image style={styles.icon} source={call} />
-                </TouchableHighlight>
-              </View>
-              <View style={styles.iconRowItem}>
-                <TouchableHighlight onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
-                  <Image style={styles.icon} source={info} />
-                </TouchableHighlight>
-              </View>
+            <View style={styles.iconRowItem}>
+              <TouchableHighlight onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
+                <Image style={styles.icon} source={info} />
+              </TouchableHighlight>
             </View>
-          </CollapseBody>
-        </Collapse>
-      </View>
+          </View>
+        </CollapseBody>
+      </Collapse>
     );
   }
 }

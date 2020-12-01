@@ -12,7 +12,7 @@ class ContactListContainer extends React.Component {
 
   render() {
     const {
-      name, image, image, navigation
+      name, image, photo, navigation
     } = this.props;
     // const contacts = [
     //   { name: 'John', phone: '581-2345', image: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-contact-512.png' },
