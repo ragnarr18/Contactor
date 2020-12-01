@@ -55,11 +55,11 @@ class ContactList extends React.Component {
   }
 }
 
-/*
+
 ContactList.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
-*/
+
 export default ContactList;
