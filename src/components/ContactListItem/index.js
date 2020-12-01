@@ -18,12 +18,17 @@ class ContactListItem extends React.Component {
     // const { item } = this.props;
     const call = require('../../images/call.png');
     const info = require('../../images/information.png');
-    const { name, contact, phone, navigation } = this.props;
+    const {
+      name, contact, phone, navigation,
+    } = this.props;
     const { navigate } = navigation;
     // { console.log(contact) }
     return (
       <Collapse style={styles.contactContainer}>
         <CollapseHeader>
+          <View>
+            <Image source={require('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-contact-512.png')} />
+          </View>
           <Text style={styles.name}>
             {name}
           </Text>
@@ -35,12 +40,16 @@ class ContactListItem extends React.Component {
             </Text>
           </View>
           <View styles={styles.iconRow}>
-            <TouchableHighlight style={styles.icon}>
-              <Image style={styles.icon} source={call} />
-            </TouchableHighlight>
-            <TouchableHighlight style={styles.icon} onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
-              <Image style={styles.icon} source={info} />
-            </TouchableHighlight>
+            <View style={styles.iconRowItem}>
+              <TouchableHighlight>
+                <Image style={styles.icon} source={call} />
+              </TouchableHighlight>
+            </View>
+            <View style={styles.iconRowItem}>
+              <TouchableHighlight onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
+                <Image style={styles.icon} source={info} />
+              </TouchableHighlight>
+            </View>
           </View>
         </CollapseBody>
       </Collapse>
@@ -62,6 +71,7 @@ ContactListItem.propTypes = {
 */
 ContactListItem.defaultProps = {
   phone: PropTypes.string = 'missing phone number',
+  image: PropTypes.string = '../../images/icon.png',
 };
 
 export default ContactListItem;
