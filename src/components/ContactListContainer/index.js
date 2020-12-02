@@ -8,20 +8,34 @@ import ContactServices from '../../services/ContactServices';
 class ContactListContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { contacts: [] };
+  }
+
+  fetchUsersByName(name) {
+    const contactsArray = ContactServices.getContactsByName(name);
+    this.setState({ contacts: contactsArray });
+  }
+
+  compnentDidMount() {
+    const { name } = this.props;
+    this.fetchUsersByName(name);
   }
 
   render() {
     const {
-      name, image, photo, navigation
+      name, image, photo, navigation,
     } = this.props;
+    for (let i = 0; i < this.state.contacts.length; i++) {
+      this.state.contacts[i];
+    }
+
     // const contacts = [
     //   { name: 'John', phone: '581-2345', image: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-contact-512.png' },
     //   { name: 'Sally', phone: '500-8000', image: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-contact-512.png' },
     // ];
     // console.log(contacts);
-    console.log('running function...');
-    ContactServices.getContactsByName('John Doe').then((res) => console.log(res));
+    // console.log('running function...');
+    // ContactServices.getContactsByName('John Doe').then((res) => console.log('res', res));
     // const contactArray = [];
 
     // contacts.forEach((item) => (
@@ -34,9 +48,9 @@ class ContactListContainer extends React.Component {
     return (
       <View>
         <View>
-          {this.props.names.map((name) => (
+          {this.state.contacts.map((contact) => (
             <ContactListItem
-              key={name}
+              key={contact.name}
               name={name}
               image={image}
               navigation={navigation}
@@ -51,8 +65,8 @@ class ContactListContainer extends React.Component {
 ContactListContainer.defaultProps = {
   name: '',
   image: '',
-  photo: ''
-}
+  photo: '',
+};
 
 ContactListContainer.propTypes = {
   name: PropTypes.string,
@@ -62,6 +76,5 @@ ContactListContainer.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
-
 
 export default ContactListContainer;

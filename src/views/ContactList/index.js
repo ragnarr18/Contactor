@@ -46,7 +46,7 @@ class ContactList extends React.Component {
         <ContactListContainer
           navigation={navigation}
           names={this.dynamicSearch()}
-          image={image}
+          // image={image}
         />
       </View>
     );
