@@ -58,7 +58,7 @@ class ContactListItem extends React.Component {
                 source={call}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
+            <TouchableOpacity onPress={() => navigate('ContactInfo', { name, phoneNumber: phone, image: 'image' })}>
               <Image
                 style={[styles.icon, { margin: 10 }]}
                 source={info}

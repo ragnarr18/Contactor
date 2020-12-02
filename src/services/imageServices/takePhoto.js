@@ -28,5 +28,3 @@ export const takePhoto = async () => {
   if (result.cancelled) { return ''; }
   return result.uri;
 };
-
-// export default takePhoto;
