@@ -23,6 +23,16 @@ class EditUser extends React.Component {
     }
   }
 
+  deleteContact() {
+    // some identifier
+    // probably the fileName of the contact
+    // fileServices.deleteContact(identifier);
+    const { closeModal, deleteContact, navigation } = this.props;
+    deleteContact();
+    // closeModal();
+    // navigation.navigate('ContactList');
+  }
+
   async takePhoto() {
     const photo = await imageServices.takePhoto();
     console.log('takePhoto', photo.length);
@@ -70,6 +80,10 @@ class EditUser extends React.Component {
         <TextInput />
         <Text>Phone: </Text>
         <TextInput />
+        {isCreate
+        && (
+          <Button title="DELETE" onPress={() => this.deleteContact()} />
+        )}
         <Button title="SAVE" onPress={closeModal} />
         <Button title="CANCEL" onPress={closeModal} />
 

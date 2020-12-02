@@ -8,7 +8,7 @@ class ContactInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: '', name: '', phoneNumber: '', isEditModalOpen: false, photoReady: false
+      image: '', name: '', phoneNumber: '', isEditModalOpen: false, photoReady: false,
     };
   }
 
@@ -16,12 +16,18 @@ class ContactInfo extends React.Component {
     this.setState({ image, name, phoneNumber });
   }
 
+  deleteContact() {
+    const { navigation } = this.props;
+    this.setState({ closeModal: true });
+    navigation.popToTop();
+  }
+
   render() {
     // console.log("made it")
     const { navigation } = this.props;
     const { userFileName } = navigation.state.params;
     const {
-      image, name, phoneNumber, isEditModalOpen, photoReady
+      image, name, phoneNumber, isEditModalOpen, photoReady,
     } = this.state;
 
     return (
@@ -31,9 +37,10 @@ class ContactInfo extends React.Component {
         <Text>dial button</Text>
         <UserModal
           isOpen={isEditModalOpen}
-          isCreate={false}
+          isCreate // change to false when done
           closeModal={() => this.setState({ isEditModalOpen: false })}
           setImage={(currentImage) => this.setState({ image: currentImage, photoReady: true })}
+          deleteContact={() => this.deleteContact()}
         />
       </View>
     );
