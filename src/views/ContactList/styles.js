@@ -9,4 +9,8 @@ export default StyleSheet.create({
   bottomBorder: {
     borderBottomWidth: 1,
   },
+  scrollView: {
+    flex: 1,
+    height: 90,
+  },
 });

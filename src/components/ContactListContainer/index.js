@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import ContactListItem from '../ContactListItem';
 // import ContactServices from '../../services/ContactServices';
 import ContactServices from '../../services/ContactServices';
+import styles from './styles';
 
 class ContactListContainer extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class ContactListContainer extends React.Component {
 
   render() {
     const {
-      name, image, photo, navigation
+      name, image, photo, navigation,
     } = this.props;
     // const contacts = [
     //   { name: 'John', phone: '581-2345', image: 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-contact-512.png' },
@@ -33,7 +34,7 @@ class ContactListContainer extends React.Component {
 
     return (
       <View>
-        <View>
+        <View style={styles.container}>
           {this.props.names.map((name) => (
             <ContactListItem
               key={name}
@@ -51,8 +52,8 @@ class ContactListContainer extends React.Component {
 ContactListContainer.defaultProps = {
   name: '',
   image: '',
-  photo: ''
-}
+  photo: '',
+};
 
 ContactListContainer.propTypes = {
   name: PropTypes.string,
@@ -62,6 +63,5 @@ ContactListContainer.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
-
 
 export default ContactListContainer;

@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, TextInput, Text } from 'react-native';
+import {
+  View, TextInput, Text, ScrollView,
+} from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import ContactListContainer from '../../components/ContactListContainer';
@@ -43,11 +45,15 @@ class ContactList extends React.Component {
             placeholder="Search for a contact!"
           />
         </View>
-        <ContactListContainer
-          navigation={navigation}
-          names={this.dynamicSearch()}
-          image={image}
-        />
+        <ScrollView
+          style={styles.ScrollView}
+        >
+          <ContactListContainer
+            navigation={navigation}
+            names={this.dynamicSearch()}
+            image={image}
+          />
+        </ScrollView>
       </View>
     );
   }
