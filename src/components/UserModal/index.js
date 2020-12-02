@@ -15,9 +15,13 @@ class EditUser extends React.Component {
     super(props);
     this.state = {};
   }
-  // selectFromCameraRoll(){
-  //
-  // }
+
+  async selectFromCameraRoll() {
+    const photo = await imageServices.selectFromCameraRoll();
+    if (photo.length > 0) {
+      await this.addImage(photo);
+    }
+  }
 
   async takePhoto() {
     const photo = await imageServices.takePhoto();
@@ -41,12 +45,19 @@ class EditUser extends React.Component {
 
   render() {
     const {
-      image, name, phoneNumber, isCreate, isOpen, closeModal, setImage
+      image, name, phoneNumber, isCreate, isOpen, closeModal, setImage,
     } = this.props;
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
         {this.state.cameraPhotoReady
-          && (<Image style={{width: 100, height: 50, borderWidth: 1, borderColor: 'red'}} source={{uri: `data:image/jpeg;base64,${this.state.image.file}`}}/>)}
+          && (
+          <Image
+            style={{
+              width: 100, height: 50, borderWidth: 1, borderColor: 'red',
+            }}
+            source={{ uri: `data:image/jpeg;base64,${this.state.image.file}` }}
+          />
+          )}
         <TouchableOpacity onPress={() => this.takePhoto()}>
           <Entypo name="camera" style={Styles.icons} />
         </TouchableOpacity>
