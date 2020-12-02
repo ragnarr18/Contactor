@@ -4,7 +4,6 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 
 class ContactListItem extends React.Component {
@@ -21,7 +20,10 @@ class ContactListItem extends React.Component {
     const info = require('../../images/information.png');
     const icon = require('../../images/icon.png');
     const {
-      name, image, phone, navigation,
+      name,
+      image,
+      phone,
+      navigation,
     } = this.props;
     const { navigate } = navigation;
 
@@ -58,7 +60,9 @@ class ContactListItem extends React.Component {
                 source={call}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigate('ContactInfo', { name, phoneNumber: phone, image: 'image' })}>
+            <TouchableOpacity
+              onPress={() => navigate('ContactInfo', { name, phoneNumber: phone, image: 'image' })}
+            >
               <Image
                 style={[styles.icon, { margin: 10 }]}
                 source={info}
