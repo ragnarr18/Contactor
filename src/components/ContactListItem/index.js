@@ -45,7 +45,13 @@ class ContactListItem extends React.Component {
           </View>
         </CollapseHeader>
         <CollapseBody>
-          <View style={{ flexDirection: 'row', justifyContent: 'center',backgroundColor: '#dddddd' }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              backgroundColor: '#dddddd',
+            }}
+          >
             <TouchableOpacity>
               <Image
                 style={[styles.icon, { margin: 10 }]}
