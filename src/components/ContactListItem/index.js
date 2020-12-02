@@ -3,8 +3,28 @@ import {
   View, Text, Image, TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import call from 'react-native-phone-call';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
 import styles from './styles';
+
+const callIcon = require('../../images/call.png');
+const infoIcon = require('../../images/information.png');
+const profileIcon = require('../../images/icon.png');
+
+function makeCall(phone) {
+  if (phone.length !== 7) {
+    alert('This contact has an invalid phone number');
+    return;
+  }
+  console.log('length is incorrect:', phone.length)
+
+  const args = {
+    number: phone,
+    prompt: true,
+  };
+  console.log('call would be made');
+  call(args).catch(console.error);
+}
 
 class ContactListItem extends React.Component {
   constructor(props) {
@@ -13,12 +33,6 @@ class ContactListItem extends React.Component {
   }
 
   render() {
-    // sendir áfram object með öllum upplýsingum um einn contact...
-
-    // const { item } = this.props;
-    const call = require('../../images/call.png');
-    const info = require('../../images/information.png');
-    const icon = require('../../images/icon.png');
     const {
       name,
       image,
@@ -27,7 +41,6 @@ class ContactListItem extends React.Component {
     } = this.props;
     const { navigate } = navigation;
 
-    console.log(image);
     return (
       <Collapse style={styles.contactContainer}>
         <CollapseHeader>
@@ -35,8 +48,7 @@ class ContactListItem extends React.Component {
             <Image
               style={[styles.icon, styles.verticalAlign]}
               resizeMode="cover"
-              source={icon}
-              alt={icon}
+              source={profileIcon}
             />
             <Text style={styles.name}>
               {name}
@@ -54,10 +66,12 @@ class ContactListItem extends React.Component {
               backgroundColor: '#dddddd',
             }}
           >
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => makeCall('4833331')}
+            >
               <Image
                 style={[styles.icon, { margin: 10 }]}
-                source={call}
+                source={callIcon}
               />
             </TouchableOpacity>
             <TouchableOpacity
@@ -65,7 +79,7 @@ class ContactListItem extends React.Component {
             >
               <Image
                 style={[styles.icon, { margin: 10 }]}
-                source={info}
+                source={infoIcon}
               />
             </TouchableOpacity>
           </View>

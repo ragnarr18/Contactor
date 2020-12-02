@@ -17,7 +17,7 @@ export const loadImage = async (fileName) => FileSystem.readAsStringAsync(`${ima
 });
 
 export const addImage = async (imageLocation) => {
-  console.log('imageLocation');
+  console.log('imageLocation', imageLocation);
   const folderSplit = imageLocation.split('/');
   const fileName = folderSplit[folderSplit.length - 1];
   await copyFile(imageLocation, `${imageDirectory}/${fileName}`);
