@@ -16,7 +16,7 @@ function makeCall(phone) {
     alert('This contact has an invalid phone number');
     return;
   }
-  console.log('length is incorrect:', phone.length)
+  console.log('length is incorrect:', phone.length);
 
   const args = {
     number: phone,

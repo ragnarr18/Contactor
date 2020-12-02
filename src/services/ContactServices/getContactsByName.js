@@ -28,7 +28,7 @@ async function populateContacts() {
   const populus = [andy, austin, john, johnOther, peter, steve];
   const fileInfo = await FileSystem.getInfoAsync(`file://${contactsDirectory}`);
   console.log(fileInfo.exists);
-  if (!fileInfo.exists) {
+  if (fileInfo.exists) {
     for (let i = 0; i < populus.length; i++) {
       await setupDirectory();
       const item = { name: populus[i].name, phone: populus[i].phone, image: populus[i].image };
@@ -54,7 +54,7 @@ async function retriveInfo(user) {
     const result = await FileSystem.readAsStringAsync(`${contactsDirectory}/${user}`);
     // console.log("result", result);
     const jsonResult = JSON.parse(result);
-    // console.log(jsonResult.phone);
+    console.log(jsonResult.phone);
     return jsonResult;
   } catch (e) {
     console.log('error', e);
@@ -102,16 +102,17 @@ async function retriveInfo(user) {
 //   return json;
 // }
 
-async function getContactsByName(name) {
-  const contacts = [];
+async function getContactsByName(fileNames) {
+  console.log("getContactsByName");
+  // const contacts = [];
   const contactsInfo = [];
 
   // get filenames
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].name === name) {
-      contacts.push(users[i].fileName);
-    }
-  }
+  // for (let i = 0; i < users.length; i++) {
+  //   if (users[i].name === name) {
+  //     contacts.push(users[i].fileName);
+  //   }
+  // }
 
   // get data from files
   // contacts.forEach(async (user) => {
@@ -121,10 +122,11 @@ async function getContactsByName(name) {
   //   console.log('item', contactsInfo.length);
   // });
 
-  for (var i = 0; i < contacts.length; i++) {
-    const info = retriveInfo(contacts[i])
+  for (var i = 0; i < fileNames.length; i++) {
+    const info = retriveInfo(fileNames[i])
     contactsInfo.push(info);
   }
+  console.log(contactsInfo)
   return contactsInfo;
   // console.log('item', contactsInfo.length);
   // return contactsInfo;

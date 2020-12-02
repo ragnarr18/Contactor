@@ -14,24 +14,34 @@ class ContactList extends React.Component {
     this.state = {
       names: ContactServices.getAllNames(),
       searchTerm: '',
+      fetchContacts: true,
     };
     this.editSearchTerm = this.editSearchTerm.bind(this);
   }
 
   editSearchTerm(text) {
     console.log(text);
+    // this.fetchContactsByName(text);
     this.setState({ searchTerm: text });
   }
 
   dynamicSearch() {
+    // console.log("dynamic");
     return this.state.names.filter(
       (name) => name.toLowerCase()
         .includes(this.state.searchTerm.toString().toLowerCase()),
     );
   }
 
+  // fetchContactsByName(fileNames) {
+  //   console.log('fetch');
+  //   const contactsArray = ContactServices.getContactsByName(fileNames);
+  //   this.setState({ contacts: contactsArray });
+  // }
+
   render() {
     const { navigation } = this.props;
+    const { fetchContacts } = this.state;
     const { image } = 'https://i.redd.it/yvq5a4xboh931.png';
     return (
       <View>
@@ -41,7 +51,7 @@ class ContactList extends React.Component {
             round
             value={this.state.searchTerm}
             onChangeText={(text) => this.editSearchTerm(text)}
-            onClear={() => this.setState({ searchTerm: '' })}
+            onClear={() => this.setState({ searchTerm: '', fetchContacts: true })}
             placeholder="Search for a contact!"
           />
         </View>
@@ -51,6 +61,8 @@ class ContactList extends React.Component {
           <ContactListContainer
             navigation={navigation}
             names={this.dynamicSearch()}
+            fetchContacts={fetchContacts}
+            // contacts={this.state.contacts}
             // image={image}
           />
         </ScrollView>

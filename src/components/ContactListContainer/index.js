@@ -12,22 +12,28 @@ class ContactListContainer extends React.Component {
     this.state = { contacts: [] };
   }
 
-  fetchUsersByName(name) {
-    const contactsArray = ContactServices.getContactsByName(name);
-    this.setState({ contacts: contactsArray });
+  fetchContactsByName(fileNames) {
+    console.log('fetch');
+    const contactsArray = ContactServices.getContactsByName(fileNames);
+    this.setState({ contacts: contactsArray, fetched: true });
   }
 
-  compnentDidMount() {
-    const { name } = this.props;
-    this.fetchUsersByName(name);
-  }
+  // compnentDidMount() {
+  //   const { names } = this.props;
+  //   this.fetchUsersByName(names);
+  // }
 
   render() {
     const {
-      name, image, photo, navigation,
+      names, image, photo, navigation, fetchContacts,
     } = this.props;
-    for (let i = 0; i < this.state.contacts.length; i++) {
-      this.state.contacts[i];
+    const { contacts, fetched } = this.state;
+    // const contacts = names;
+    console.log(fetchContacts);
+    if (fetchContacts && !fetched ) {
+      this.fetchContactsByName(names);
+      console.log('contacts', contacts);
+      // fetched = true;
     }
 
     // const contacts = [
@@ -49,15 +55,16 @@ class ContactListContainer extends React.Component {
     return (
       <View>
         <View>
-          {this.state.contacts.map((contact) => (
+          {this.props.names.map((name) => (
             <ContactListItem
-              key={contact.name}
+              key={name}
               name={name}
               image={image}
               navigation={navigation}
             />
           ))}
         </View>
+
       </View>
     );
   }
