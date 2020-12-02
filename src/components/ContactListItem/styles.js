@@ -1,29 +1,39 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
-const WIDTH = Math.round(Dimensions.get('window').width);
+const screenWidth = Math.round(Dimensions.get('window').width);
+const iconWidth = 75;
 
 export default StyleSheet.create({
   contactContainer: {
     borderBottomWidth: 1,
     padding: 5,
   },
+  headerView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   name: {
+    position: 'absolute',
+    left: iconWidth + 10,
     fontSize: 25,
-    alignSelf: 'center',
   },
   phoneNumber: {
+    marginRight: 5,
     fontSize: 15,
     opacity: 0.5,
-    alignSelf: 'center',
   },
   icon: {
-    height: 30,
-    width: 30,
+    height: iconWidth,
+    width: iconWidth,
+  },
+  verticalAlign: {
+    justifyContent: 'center',
   },
   iconRow: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignContent: 'space-around',
+    alignContent: 'space-between',
     borderWidth: 1,
   },
   iconRowItem: {

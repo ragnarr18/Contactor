@@ -29,9 +29,9 @@ class ContactListItem extends React.Component {
     return (
       <Collapse style={styles.contactContainer}>
         <CollapseHeader>
-          <View>
+          <View style={styles.headerView}>
             <Image
-              style={styles.icon}
+              style={[styles.icon, styles.verticalAlign]}
               resizeMode="cover"
               source={icon}
               alt={icon}
@@ -39,26 +39,24 @@ class ContactListItem extends React.Component {
             <Text style={styles.name}>
               {name}
             </Text>
-          </View>
-        </CollapseHeader>
-        <CollapseBody>
-          <View>
             <Text style={styles.phoneNumber}>
               {phone}
             </Text>
           </View>
-          <View styles={styles.iconRow}>
-            <View style={styles.iconRowItem}>
-              <TouchableHighlight>
-                <Image style={styles.icon} source={call} />
-              </TouchableHighlight>
-            </View>
-            <View style={styles.iconRowItem}>
-              <TouchableHighlight onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
-                <Image style={styles.icon} source={info} />
-              </TouchableHighlight>
-            </View>
-          </View>
+        </CollapseHeader>
+        <CollapseBody styles={styles.headerView}>
+          <TouchableHighlight>
+            <Image
+              style={styles.icon}
+              source={call}
+            />
+          </TouchableHighlight>
+          <TouchableHighlight onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
+            <Image
+              style={styles.icon}
+              source={info}
+            />
+          </TouchableHighlight>
         </CollapseBody>
       </Collapse>
     );

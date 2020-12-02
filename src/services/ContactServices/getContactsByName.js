@@ -2,6 +2,7 @@ import FileSystem from 'expo-file-system';
 import data from '../../resources/USERS.json';
 
 const { users } = data;
+// const directory = './src/resources/contacts/';
 const directory = '../../resources/contacts/';
 
 async function getContactsByName(name) {
@@ -16,19 +17,35 @@ async function getContactsByName(name) {
   }
 
   // get data from files
-  console.log(directory + contacts[0]);
-  return contacts.forEach((user) => {
-    try {
-      FileSystem.readAsStringAsync(`file://${directory}${user}`)
-        .then((res) => res.json())
-        .then((json) => contactsInfo.push(json))
-    } catch (e) {
-      console.log("couldn't find file: ", e);
-    }
+  contacts.forEach((user) => {
+    contactsInfo.push(
+      (async () => { await FileSystem.readAsStringAsync(`file://${directory}${user}`); }),
+    );
   });
+  console.log('item', contactsInfo);
+  return contactsInfo;
 
   // console.log('size', contactsInfo.size());
   // return contactsInfo;
+}
+
+async function getContactsByName2(name) {
+  const contacts = [];
+  const contactsInfo = [];
+
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].name === name) {
+      contacts.push(users[i].fileName);
+    }
+  }
+
+  contacts.forEach((user) => {
+    try {
+      console.log(user);
+    } catch (e) {
+      console.log('could not find file', e);
+    }
+  });
 }
 
 export default getContactsByName;
