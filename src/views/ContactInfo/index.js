@@ -8,7 +8,11 @@ class ContactInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: '', name: '', phoneNumber: '', isEditModalOpen: false, photoReady: false,
+      image: '',
+      name: '',
+      phoneNumber: '',
+      isEditModalOpen: false,
+      photoReady: false,
     };
   }
 
@@ -34,8 +38,16 @@ class ContactInfo extends React.Component {
 
     return (
       <View>
-        <User name={name} phoneNumber={phoneNumber} image={image} photoReady={photoReady} />
-        <Button title="Edit" onPress={() => this.setState({ isEditModalOpen: true })} />
+        <User
+          name={name}
+          phoneNumber={phoneNumber}
+          image={image}
+          photoReady={photoReady}
+        />
+        <Button
+          title="Edit"
+          onPress={() => this.setState({ isEditModalOpen: true })}
+        />
         <Text>dial button</Text>
         <UserModal
           isOpen={isEditModalOpen}
