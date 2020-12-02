@@ -7,6 +7,9 @@ import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 
+const call = require('../../images/call.png');
+const info = require('../../images/information.png');
+const icon = require('../../images/icon.png');
 class ContactListItem extends React.Component {
   constructor(props) {
     super(props);
@@ -17,9 +20,7 @@ class ContactListItem extends React.Component {
     // sendir áfram object með öllum upplýsingum um einn contact...
 
     // const { item } = this.props;
-    const call = require('../../images/call.png');
-    const info = require('../../images/information.png');
-    const icon = require('../../images/icon.png');
+
     const {
       name, image, phone, navigation,
     } = this.props;
