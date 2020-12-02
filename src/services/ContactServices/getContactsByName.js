@@ -5,6 +5,13 @@ const { users } = data;
 // const directory = './src/resources/contacts/';
 const directory = '../../resources/contacts/';
 
+async function retriveInfo(user) {
+  const info = await FileSystem.readAsStringAsync(`file://${directory}${user}`);
+  const json = await info.json();
+  console.log('info:', json);
+  return json;
+}
+
 async function getContactsByName(name) {
   const contacts = [];
   const contactsInfo = [];
@@ -18,9 +25,8 @@ async function getContactsByName(name) {
 
   // get data from files
   contacts.forEach((user) => {
-    contactsInfo.push(
-      (async () => { await FileSystem.readAsStringAsync(`file://${directory}${user}`); }),
-    );
+    const info = retriveInfo(user);
+    contactsInfo.push(info);
   });
   console.log('item', contactsInfo);
   return contactsInfo;
