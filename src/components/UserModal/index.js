@@ -23,14 +23,36 @@ class EditUser extends React.Component {
     }
   }
 
+  createContact() {
+    // fileServices.createContact()
+    const { createContact } = this.props;
+    createContact();
+  }
+
+  saveChanges() {
+    // fileServices.saveChanges()
+    const { saveChanges } = this.props;
+    saveChanges();
+  }
+
+  cancelCreate() {
+    // reset values to ''
+    const { cancelCreate } = this.props;
+    cancelCreate();
+  }
+
+  cancelChanges() {
+    // reset values to the original
+    const { cancelChanges } = this.props;
+    cancelChanges();
+  }
+
   deleteContact() {
     // some identifier
     // probably the fileName of the contact
     // fileServices.deleteContact(identifier);
-    const { closeModal, deleteContact, navigation } = this.props;
+    const { deleteContact } = this.props;
     deleteContact();
-    // closeModal();
-    // navigation.navigate('ContactList');
   }
 
   async takePhoto() {
@@ -43,13 +65,12 @@ class EditUser extends React.Component {
 
   async addImage(imageLocation) {
     this.setState({ loadingImage: true }); // spinning wheel mechanic
-    console.log('addimg');
     const newImage = await fileServices.addImage(imageLocation);
-    console.log('newImage', newImage);
+    // console.log('newImage', newImage);
 
-    const createdImage = await fileServices.getImage(imageLocation);
+    // const createdImage = await fileServices.getImage(imageLocation);
     // console.log(createdImage);
-    this.setState({ image: newImage, loadImage: false, cameraPhotoReady: true });
+    this.setState({ image: newImage, loadImage: false, photoSet: true });
     // isModalOpen : false
   }
 
@@ -59,7 +80,7 @@ class EditUser extends React.Component {
     } = this.props;
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
-        {this.state.cameraPhotoReady
+        {this.state.photoSet // or display default image
           && (
           <Image
             style={{
@@ -74,13 +95,11 @@ class EditUser extends React.Component {
         <TouchableOpacity onPress={() => this.selectFromCameraRoll()}>
           <Entypo name="image" style={Styles.icons} />
         </TouchableOpacity>
-
-        <Text>upload button here</Text>
         <Text>Name: </Text>
         <TextInput />
         <Text>Phone: </Text>
         <TextInput />
-        {isCreate
+        {!isCreate
         && (
           <Button title="DELETE" onPress={() => this.deleteContact()} />
         )}
