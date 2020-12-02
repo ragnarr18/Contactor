@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, Text, Image, TouchableHighlight,
+  View, Text, Image, TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
@@ -44,19 +44,21 @@ class ContactListItem extends React.Component {
             </Text>
           </View>
         </CollapseHeader>
-        <CollapseBody styles={styles.headerView}>
-          <TouchableHighlight>
-            <Image
-              style={styles.icon}
-              source={call}
-            />
-          </TouchableHighlight>
-          <TouchableHighlight onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
-            <Image
-              style={styles.icon}
-              source={info}
-            />
-          </TouchableHighlight>
+        <CollapseBody>
+          <View style={{ flexDirection: 'row', justifyContent: 'center',backgroundColor: '#dddddd' }}>
+            <TouchableOpacity>
+              <Image
+                style={[styles.icon, { margin: 10 }]}
+                source={call}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
+              <Image
+                style={[styles.icon, { margin: 10 }]}
+                source={info}
+              />
+            </TouchableOpacity>
+          </View>
         </CollapseBody>
       </Collapse>
     );

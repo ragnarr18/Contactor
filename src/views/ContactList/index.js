@@ -3,16 +3,14 @@ import { View, TextInput, Text } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import ContactListContainer from '../../components/ContactListContainer';
+import ContactServices from '../../services/ContactServices';
 import styles from './styles';
 
 class ContactList extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      names: [
-        'John',
-        'Sally',
-      ],
+      names: ContactServices.getAllNames(),
       searchTerm: '',
     };
     this.editSearchTerm = this.editSearchTerm.bind(this);
