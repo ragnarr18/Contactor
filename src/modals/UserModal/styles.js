@@ -10,14 +10,14 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   body: {
-    flex: 1,
+    flex: 0.3,
     alignItems: 'center',
     justifyContent: 'center',
-    flexGrow: 0.3,
+    flexGrow: 0.7,
     borderRadius: 10,
     width: winWidth - 100,
-    height: winHeight - 300,
+    height: winHeight - 100,
     backgroundColor: 'white',
-    padding: 40,
+    padding: 30,
   },
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import {
-  TextInput, Text, Button, TouchableOpacity, Image,
+  View, TextInput, Text, Button, TouchableOpacity, Image,
 } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import Modal from '../../modals/UserModal';
@@ -89,32 +89,46 @@ class EditUser extends React.Component {
     const { name, phoneNumber } = this.state;
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
+        <Text style={Styles.title}>Edit Contact</Text>
         {this.state.photoSet // or display default image
           && (
           <Image
-            style={{
-              width: 100, height: 50, borderWidth: 1, borderColor: 'red',
-            }}
+            style={Styles.image}
             source={{ uri: `data:image/jpeg;base64,${this.state.image.file}` }}
           />
           )}
-        <TouchableOpacity onPress={() => this.takePhoto()}>
-          <Entypo name="camera" style={Styles.icons} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.selectFromCameraRoll()}>
-          <Entypo name="image" style={Styles.icons} />
-        </TouchableOpacity>
-        <Text>Name: </Text>
-        <TextInput defaultValue={name} onChangeText={(text) => this.updateName(text)} />
-        <Text>Phone: </Text>
-        <TextInput defaultValue={phoneNumber} onChangeText={(text) => this.updatePhone(text)} />
-        {!isCreate
-        && (
-          <Button title="DELETE" onPress={() => this.deleteContact()} />
-        )}
-        <Button title="SAVE" onPress={closeModal} />
-        <Button title="CANCEL" onPress={closeModal} />
-
+        <View style={Styles.iconBox}>
+          <TouchableOpacity onPress={() => this.takePhoto()}>
+            <Entypo name="camera" style={Styles.icons} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.selectFromCameraRoll()}>
+            <Entypo name="image" style={Styles.icons} />
+          </TouchableOpacity>
+        </View>
+        <View style={Styles.textWrap}>
+          <Text>Name: </Text>
+          <TextInput
+            defaultValue={name}
+            onChangeText={(text) => this.updateName(text)}
+            style={Styles.textBox}
+          />
+        </View>
+        <View style={Styles.textWrap}>
+          <Text>Phone: </Text>
+          <TextInput
+            defaultValue={phoneNumber}
+            onChangeText={(text) => this.updatePhone(text)}
+            style={Styles.textBox}
+          />
+        </View>
+        <View style={Styles.textWrap}>
+          {!isCreate
+          && (
+            <Button title="DELETE" onPress={() => this.deleteContact()} />
+          )}
+          <Button title="SAVE" onPress={closeModal} />
+          <Button title="CANCEL" onPress={closeModal} />
+        </View>
       </Modal>
     );
   }
