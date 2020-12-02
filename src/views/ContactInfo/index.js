@@ -27,7 +27,9 @@ class ContactInfo extends React.Component {
     const { navigation } = this.props;
     const { name, phoneNumber } = navigation.state.params;
     const {
-      image, isEditModalOpen, photoReady,
+      image,
+      isEditModalOpen,
+      photoReady,
     } = this.state;
 
     return (
