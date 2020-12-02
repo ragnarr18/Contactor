@@ -45,14 +45,14 @@ class ContactListItem extends React.Component {
           </View>
         </CollapseHeader>
         <CollapseBody>
-          <View style={{ flexDirection: 'row', justifyContent: 'center',backgroundColor: '#dddddd' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'center', backgroundColor: '#dddddd' }}>
             <TouchableOpacity>
               <Image
                 style={[styles.icon, { margin: 10 }]}
                 source={call}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigate('ContactInfo', { name: 'name', phoneNumber: 'phoneNumber', image: 'image' })}>
+            <TouchableOpacity onPress={() => navigate('ContactInfo', { name, phoneNumber: phone, image: 'image' })}>
               <Image
                 style={[styles.icon, { margin: 10 }]}
                 source={info}

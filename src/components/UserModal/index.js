@@ -74,10 +74,19 @@ class EditUser extends React.Component {
     // isModalOpen : false
   }
 
+  updateName(text) {
+    this.setState({ name: text });
+  }
+
+  updatePhone(text) {
+    this.setState({ phoneNumber: text });
+  }
+
   render() {
     const {
-      image, name, phoneNumber, isCreate, isOpen, closeModal, setImage,
+      image, isCreate, isOpen, closeModal, setImage,
     } = this.props;
+    const { name, phoneNumber } = this.state;
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
         {this.state.photoSet // or display default image
@@ -96,9 +105,9 @@ class EditUser extends React.Component {
           <Entypo name="image" style={Styles.icons} />
         </TouchableOpacity>
         <Text>Name: </Text>
-        <TextInput />
+        <TextInput defaultValue={name} onChangeText={(text) => this.updateName(text)} />
         <Text>Phone: </Text>
-        <TextInput />
+        <TextInput defaultValue={phoneNumber} onChangeText={(text) => this.updatePhone(text)} />
         {!isCreate
         && (
           <Button title="DELETE" onPress={() => this.deleteContact()} />
