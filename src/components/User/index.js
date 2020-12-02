@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { PropTypes } from 'prop-types';
 
 class User extends React.Component {
@@ -9,13 +9,34 @@ class User extends React.Component {
   }
 
   render() {
-    const { name, phoneNumber, image, photoReady } = this.props;
+    const {
+      name,
+      phoneNumber,
+      image,
+      photoReady,
+    } = this.props;
     return (
       <View>
         {this.state.photoReady
-          && (<Image style={{width: 100, height: 50, borderWidth: 1, borderColor: 'red'}} source={{uri: `data:image/jpeg;base64,${this.state.image.file}`}}/>)}
-        <Text>{name}</Text>
-        <Text>{phoneNumber}</Text>
+          && (
+          <Image
+            style={{
+              width: 100,
+              height: 50,
+              borderWidth: 1,
+              borderColor: 'red'
+            }}
+            source={{
+              uri: `data:image/jpeg;base64,${this.state.image.file}`
+            }}
+          />
+)}
+        <Text>
+          {name}
+        </Text>
+        <Text>
+          {phoneNumber}
+        </Text>
       </View>
     );
   }
