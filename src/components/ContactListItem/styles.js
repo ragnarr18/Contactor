@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
-const screenWidth = Math.round(Dimensions.get('window').width);
+// const screenWidth = Math.round(Dimensions.get('window').width);
 const iconWidth = 75;
 
 export default StyleSheet.create({
@@ -15,7 +15,7 @@ export default StyleSheet.create({
   name: {
     position: 'absolute',
     left: iconWidth + 10,
-    fontSize: 25,
+    fontSize: 20,
   },
   phoneNumber: {
     marginRight: 5,

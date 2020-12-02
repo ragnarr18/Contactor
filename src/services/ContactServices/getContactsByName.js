@@ -29,23 +29,4 @@ async function getContactsByName(name) {
   // return contactsInfo;
 }
 
-async function getContactsByName2(name) {
-  const contacts = [];
-  const contactsInfo = [];
-
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].name === name) {
-      contacts.push(users[i].fileName);
-    }
-  }
-
-  contacts.forEach((user) => {
-    try {
-      console.log(user);
-    } catch (e) {
-      console.log('could not find file', e);
-    }
-  });
-}
-
 export default getContactsByName;
