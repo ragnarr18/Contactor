@@ -59,7 +59,6 @@ class ContactImport extends React.Component {
       await createContact(newContact);
       values.push(newContact);
     }
-    console.log('final',values);
     this.close()
     // return values;
   }
