@@ -58,6 +58,7 @@ class ContactListContainer extends React.Component {
 
     return (
       <View>
+<<<<<<< HEAD
         {this.state.contacts.length > 1
           && (
           <View>
@@ -73,6 +74,19 @@ class ContactListContainer extends React.Component {
           </View>
           )}
 
+=======
+        <View>
+          {this.state.contacts.map((contact) => (
+            <ContactListItem
+              key={contact.name}
+              name={contact.name}
+              image={contact.image}
+              phone={contact.phone}
+              navigation={navigation}
+            />
+          ))}
+        </View>
+>>>>>>> c6a73602ce33473dac2237bcf13a544e29329d94
       </View>
     );
   }
