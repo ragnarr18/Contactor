@@ -63,24 +63,13 @@ class ContactImport extends React.Component {
 
     const contactItems = [];
     const contactNames = [];
-    let icon = <Icon name="check-box-outline-blank" size={20} />;
+
+    let notSelected = "#dddddd";
+    let empty = selected.length <= 0;
 
     contacts.forEach((item) => {
-      if (selected.includes(item.name)) { icon = <Icon name="check-box" size={20} />; }
-
       contactNames.push(
         { label: item.name, value: item }
-      );
-
-      contactItems.push(
-        <TouchableOpacity onPress={() => this.addToSelected(item)}>
-          <View style={styles.importContact}>
-            {icon}
-            <Text>
-              {item.name}
-            </Text>
-          </View>
-        </TouchableOpacity>
       );
     });
 
@@ -98,16 +87,22 @@ class ContactImport extends React.Component {
             selectedItems={this.state.selected}
             onSelectionsChange={this.addToSelected}
           />
-          <Button
-            title="Select"
-            style={styles.bottomButton}
-            onPress={() => this.returnSelected()}
-          />
-          <Button
-            title="Close"
-            style={styles.bottomButton}
-            onPress={() => this.close()}
-          />
+          <View style={styles.bottomButton}>
+            <Button
+              title="Select"
+              style={styles.bottomButton}
+              color={empty && notSelected}
+              disabled={empty}
+              onPress={() => this.returnSelected()}
+            />
+          </View>
+          <View style={styles.bottomButton}>
+            <Button
+              title="Cancel"
+              style={styles.bottomButton}
+              onPress={() => this.close()}
+            />
+          </View>
         </View>
       </Modal>
     );

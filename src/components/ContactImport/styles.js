@@ -6,8 +6,11 @@ export default StyleSheet.create({
     fontSize: 25,
   },
   bottomButton: {
-    margin: 50,
+    padding: 5,
     justifyContent: 'flex-end',
+  },
+  notSelected: {
+    backgroundColor: "#dddddd",
   },
   scrollView: {
     flex: 1,
