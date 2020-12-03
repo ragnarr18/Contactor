@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, TouchableOpacity } from 'react-native';
+import { Icon } from 'react-native-elements';
 // import userService from '../../services/userService'; (this is the image that we Need)
 import User from '../../components/User';
 import UserModal from '../../components/UserModal';
+import styles from './styles';
 
 class ContactInfo extends React.Component {
   constructor(props) {
@@ -14,6 +16,8 @@ class ContactInfo extends React.Component {
       isEditModalOpen: false,
       photoReady: false,
     };
+    const { image, name, phone } = this.props;
+    this.setNewInfo(image, name, phone);
   }
 
   setNewInfo(image, name, phoneNumber) {
@@ -26,6 +30,10 @@ class ContactInfo extends React.Component {
     navigation.popToTop();
   }
 
+  openEditModal() {
+    this.setState({ isEditModalOpen: true });
+  }
+
   render() {
     // console.log("made it")
     const { navigation } = this.props;
@@ -33,19 +41,38 @@ class ContactInfo extends React.Component {
     const {
       isEditModalOpen,
     } = this.props;
+    const { photoReady } = this.state;
 
     return (
       <View>
+        <TouchableOpacity
+          style={styles.edit}
+          onPress={() => this.openEditModal()}
+        >
+          <Text style={styles.editText}>
+            Edit Contact
+          </Text>
+          <View />
+          <Icon
+            name="create"
+            size={30}
+          />
+        </TouchableOpacity>
         <User
           name={name}
           phone={phone}
           image={image}
+          photoReady={photoReady}
         />
-        <Button
-          title="Edit"
-          onPress={() => this.setState({ isEditModalOpen: true })}
-        />
-        <Text>dial button</Text>
+        <View style={styles.dial}>
+          <Icon
+            reverse
+            raised
+            color="#33cc33"
+            name="call"
+            size={50}
+          />
+        </View>
         <UserModal
           isOpen={isEditModalOpen}
           name={name}

@@ -54,7 +54,6 @@ class ContactList extends React.Component {
     return (
       <View>
         <View styles={styles.bottomBorder}>
-          <Text style={styles.header}>THE CONTRACTOR</Text>
           <SearchBar
             round
             value={this.state.searchTerm}
@@ -65,11 +64,17 @@ class ContactList extends React.Component {
         </View>
         <View style={styles.bottomBorder}>
           <View style={styles.textWrap}>
-            <TouchableOpacity onPress={() => this.setState({ isImportModalOpen: true })}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.setState({ isImportModalOpen: true })}
+            >
               <Icon name="contacts" size={30} />
               <Text>Import contacts</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.setState({ isContactModalOpen: true })}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.setState({ isContactModalOpen: true })}
+            >
               <Icon name="add" type="material" size={30} />
               <Text>Create new contact</Text>
             </TouchableOpacity>

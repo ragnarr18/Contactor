@@ -1,20 +1,16 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  header: {
-    fontSize: 30,
-    alignSelf: 'center',
-    margin: 10,
-  },
   bottomBorder: {
-    height: 60,
+    height: 70,
     borderBottomWidth: 1,
     alignItems: 'center',
+    backgroundColor: '#bdc7d0',
   },
   textWrap: {
     flex: 0.1,
     flexWrap: 'wrap',
-    margin: 5,
+    margin: 10,
     alignItems: 'center',
   },
   textWrapLeft: {
@@ -35,5 +31,8 @@ export default StyleSheet.create({
   },
   rightIcon: {
     borderWidth: 5,
+  },
+  button: {
+    marginRight: 45,
   },
 });

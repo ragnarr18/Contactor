@@ -40,13 +40,14 @@ class ContactListItem extends React.Component {
     } = this.props;
     // {console.log("this is the image", image)};
     const { navigate } = navigation;
+    const ready = true;
 
     return (
       <Collapse style={styles.contactContainer}>
         <CollapseHeader>
           <View style={styles.headerView}>
             <Image
-              style={[styles.icon, styles.verticalAlign]}
+              style={[styles.icon, styles.verticalAlign, { borderRadius: 75 / 2 }]}
               resizeMode="cover"
               // source={{uri: image}}
               source={{ uri: `${image}` }}
@@ -80,7 +81,7 @@ class ContactListItem extends React.Component {
               />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigate('ContactInfo', { name, phone, image })}
+              onPress={() => navigate('ContactInfo', { name, phone, image, ready })}
             >
               <Image
                 style={[styles.icon, { margin: 10 }]}
@@ -96,11 +97,10 @@ class ContactListItem extends React.Component {
 
 ContactListItem.defaultProps = {
   phone: PropTypes.string = 'Missing',
-  // image: PropTypes.string = 'https://i.redd.it/yvq5a4xboh931.png',
 };
 
 ContactListItem.propTypes = {
-  image: PropTypes.string,
+  image: PropTypes.string.isRequired,
   phone: PropTypes.string,
   name: PropTypes.string.isRequired,
   navigation: PropTypes.shape({
