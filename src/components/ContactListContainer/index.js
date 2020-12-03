@@ -69,7 +69,6 @@ class ContactListContainer extends React.Component {
             />
           ))}
         </View>
-
       </View>
     );
   }
