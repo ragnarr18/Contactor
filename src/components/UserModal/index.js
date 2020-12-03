@@ -138,6 +138,7 @@ class EditUser extends React.Component {
           <TextInput
             value={name}
             onChangeText={(text) => this.updateName(text)}
+            textAlign="center"
             style={Styles.textBox}
           />
         </View>
@@ -147,6 +148,7 @@ class EditUser extends React.Component {
             keyboardType="numeric"
             value={phone}
             onChangeText={(text) => this.updatePhone(text)}
+            textAlign="center"
             style={Styles.textBox}
           />
         </View>
@@ -156,15 +158,18 @@ class EditUser extends React.Component {
             <Button
               title="DELETE"
               onPress={() => this.deleteContact()}
+              style={Styles.button}
             />
           )}
           <Button
             title="SAVE"
             onPress={isCreate ? () => this.createContact() : () => this.saveChanges()}
+            style={Styles.button}
           />
           <Button
             title="CANCEL"
             onPress={isCreate ? () => this.cancelCreate() : () => this.cancelChanges()}
+            style={Styles.button}
           />
           {/* <Button title="SAVE" onPress={() => this.createContact(closeModal)} />
           <Button title="CANCEL" onPress={closeModal} /> */}
