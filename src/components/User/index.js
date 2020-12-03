@@ -11,26 +11,23 @@ class User extends React.Component {
   render() {
     const {
       name,
-      phoneNumber,
+      phone,
       image,
       photoReady,
     } = this.props;
     return (
       <View>
-        {this.props.photoReady
-          && (
-          <Image
-            style={{
-              width: 100,
-              height: 50,
-              borderWidth: 1,
-              borderColor: 'red',
-            }}
-            source={{
-              uri: `${this.props.image}`,
-            }}
-          />
-          )}
+        <Image
+          style={{
+            width: 100,
+            height: 100,
+            borderWidth: 1,
+            borderColor: 'red',
+          }}
+          source={{
+            uri: `${image}`,
+          }}
+        />
         <Text>
           Contact Name:
           {' '}
@@ -39,7 +36,7 @@ class User extends React.Component {
         <Text>
           Contact Number:
           {' '}
-          {phoneNumber}
+          {phone}
         </Text>
       </View>
     );

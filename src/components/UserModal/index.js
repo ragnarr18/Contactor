@@ -25,9 +25,10 @@ class EditUser extends React.Component {
 
   async createContact() {
     const { name, phone, imageObject } = this.state;
-    const image = '';
+    let image = '';
+    console.log("isUndefined: ", (imageObject !== undefined) );
     if (imageObject !== undefined) {
-      const image = `data:image/jpeg;base64,${imageObject.file}`;
+       image = `data:image/jpeg;base64,${imageObject.file}`;
     }
     const newContact = { name, phone, image };
     console.log(imageObject);
@@ -96,9 +97,12 @@ class EditUser extends React.Component {
 
   render() {
     const {
-      image, isCreate, isOpen, closeModal, setImage,
+      image, isCreate, isOpen, closeModal, setImage, defaultValuesSet,
     } = this.props;
     const { name, phone } = this.state;
+    if(!defaultValuesSet){
+
+    }
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
         <Text style={Styles.title}>Contact Info</Text>
