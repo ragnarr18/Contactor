@@ -22,7 +22,6 @@ function makeCall(phone) {
     number: phone,
     prompt: true,
   };
-  console.log('call would be made');
   call(args).catch(console.error);
 }
 
@@ -73,7 +72,7 @@ class ContactListItem extends React.Component {
             }}
           >
             <TouchableOpacity
-              onPress={() => makeCall('4833331')}
+              onPress={() => makeCall(phone)}
             >
               <Image
                 style={[styles.icon, { margin: 10 }]}
