@@ -8,7 +8,6 @@ import ContactListContainer from '../../components/ContactListContainer';
 import ContactServices from '../../services/ContactServices';
 import styles from './styles';
 import ContactImport from '../../components/ContactImport';
-import ImportContact from '../../components/importContact';
 import ContactModal from '../../components/UserModal';
 
 class ContactList extends React.Component {
@@ -81,7 +80,7 @@ class ContactList extends React.Component {
           setImage={(currentImage) => this.setState({ image: currentImage, photoReady: true })}
           // createContact={() => {}}
         />
-        <ImportContact
+        <ContactImport
           isOpen={isImportModalOpen}
           closeModel={() => this.setState({ isImportModalOpen: false })}
         />

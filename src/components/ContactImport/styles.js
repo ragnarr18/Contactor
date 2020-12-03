@@ -10,7 +10,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
   },
   notSelected: {
-    backgroundColor: "#dddddd",
+    backgroundColor: '#dddddd',
   },
   scrollView: {
     flex: 1,
