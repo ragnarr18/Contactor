@@ -28,14 +28,14 @@ async function retriveInfo(user) {
 
   try {
     // result = await FileSystem.readAsStringAsync(`file://${directory}${user}`);
-    console.log("write happened")
+    // console.log("write happened")
     result = await FileSystem.readAsStringAsync(`file://${contactsDirectory}/${user}`);
     var fileInfo = await FileSystem.getInfoAsync(`file://${contactsDirectory}`)
-    console.log(fileInfo);
+    // console.log(fileInfo);
   } catch (e) {
-    console.log("error", e);
+    // console.log("error", e);
   }
-  console.log("result", result)
+  // console.log("result", result)
   return result;
   // const info = await FileSystem.readAsStringAsync(`file://${directory}${user}`);
   // return Promise.all(info.map(async (fileName) => {
@@ -69,7 +69,7 @@ async function getContactsByName(name) {
     const info = retriveInfo(user);
     contactsInfo.push(info);
   });
-  console.log('item', contactsInfo);
+  // console.log('item', contactsInfo);
   return contactsInfo;
 
   // console.log('size', contactsInfo.size());
