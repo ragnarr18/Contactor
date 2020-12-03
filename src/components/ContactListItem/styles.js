@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 // const screenWidth = Math.round(Dimensions.get('window').width);
-const iconWidth = 75;
+const iconWidth = 60;
 
 export default StyleSheet.create({
   contactContainer: {
@@ -36,6 +36,7 @@ export default StyleSheet.create({
   icon: {
     height: iconWidth,
     width: iconWidth,
+    margin: 10,
   },
   verticalAlign: {
     justifyContent: 'center',

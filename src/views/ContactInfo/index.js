@@ -84,10 +84,9 @@ class ContactInfo extends React.Component {
           name={name}
           phone={phone}
           image={image}
-          photoReady
           isCreate={false}
           closeModal={() => this.setState({ isEditModalOpen: false })}
-          setImage={(currentImage) => this.setState({ image: currentImage, photoReady: true })}
+          setImage={(currentImage) => this.setState({ image: currentImage })}
           deleteContact={() => this.deleteContact()}
         />
       </View>

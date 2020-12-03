@@ -15,22 +15,13 @@ class User extends React.Component {
       name,
       phone,
       image,
-      photoReady,
     } = this.props;
     return (
       <View>
-        {photoReady
-          ? (
-            <Image
-              style={styles.photo}
-              source={{ uri: `${image}` }}
-            />
-          ) : (
-            <Image
-              style={styles.photo}
-              source={this.profileIcon}
-            />
-          )}
+        <Image
+          style={styles.photo}
+          source={{ uri: `${image}` }}
+        />
         <Text style={styles.name}>
           {name}
         </Text>
@@ -46,7 +37,6 @@ User.propTypes = {
   name: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  photoReady: PropTypes.bool.isRequired,
 };
 
 export default User;
