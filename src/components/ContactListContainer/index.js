@@ -23,7 +23,7 @@ class ContactListContainer extends React.Component {
     console.log('fetch');
     const contactsArray = await ContactServices.getContactsByName(fileNames);
     console.log('this is the contactsArray : ', contactsArray.length);
-    contactsArray.sort((a, b) => (a.name > b.name)? 1: -1);
+    contactsArray.sort((a, b) => ((a.name > b.name) ? 1 : -1));
     this.setState({ contacts: contactsArray, fetched: true });
   }
 
@@ -63,10 +63,11 @@ class ContactListContainer extends React.Component {
           <View>
             {this.state.contacts.map((contact) => (
               <ContactListItem
-                key={contact.name}
+                key={contact.fileName}
                 name={contact.name}
                 image={contact.image}
                 phone={contact.phone}
+                fileName={contact.fileName}
                 navigation={navigation}
               />
             ))}

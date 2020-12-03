@@ -43,7 +43,9 @@ class EditUser extends React.Component {
     const { fileName, name, phone } = this.state;
 
     const { closeAndFetch } = this.props;
-    this.setState({ name: '', phone: '', imageObject: '' });
+    this.setState({
+      name: '', phone: '', imageObject: '', valuesSet: false,
+    });
     closeAndFetch();
   }
 
@@ -56,7 +58,9 @@ class EditUser extends React.Component {
   cancelChanges() {
     // reset values to the original
     const { closeModal } = this.props;
-    this.setState({ name: '', phone: '', imageObject: '' });
+    this.setState({
+      name: '', phone: '', imageObject: '', valuesSet: false,
+    });
     closeModal();
   }
 
@@ -107,9 +111,9 @@ class EditUser extends React.Component {
       image, isCreate, isOpen, closeModal, setImage, defaultValuesSet,
     } = this.props;
     const { name, phone, valuesSet } = this.state;
-    // if (!defaultValuesSet && !valuesSet) {
-    //   this.setValues();
-    // }
+    if (!defaultValuesSet && !valuesSet) {
+      this.setValues();
+    }
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
         <Text style={Styles.title}>Contact Info</Text>

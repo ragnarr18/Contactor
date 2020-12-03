@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, Button, TouchableOpacity } from 'react-native';
+import {
+  View, Text, Button, TouchableOpacity,
+} from 'react-native';
 import { Icon } from 'react-native-elements';
 // import userService from '../../services/userService'; (this is the image that we Need)
 import User from '../../components/User';
@@ -15,7 +17,9 @@ class ContactInfo extends React.Component {
       phoneNumber: '',
       isEditModalOpen: false,
     };
-    const { image, name, phone } = this.props;
+    const {
+      image, name, phone, fileName,
+    } = this.props;
     this.setNewInfo(image, name, phone);
   }
 
@@ -30,13 +34,18 @@ class ContactInfo extends React.Component {
   }
 
   openEditModal() {
+    console.log("this fileName: ", this.props.navigation.state.params.fileName);
+    console.log("this phone: ", this.props.navigation.state.params.phone);
+
     this.setState({ isEditModalOpen: true });
   }
 
   render() {
     // console.log("made it")
     const { navigation } = this.props;
-    const { name, phone, image } = navigation.state.params;
+    const {
+      name, phone, image, fileName,
+    } = navigation.state.params;
     const { photoReady, isEditModalOpen } = this.state;
 
     return (
@@ -59,6 +68,7 @@ class ContactInfo extends React.Component {
           phone={phone}
           image={image}
           photoReady={photoReady}
+          fileName={fileName}
         />
         <View style={styles.dial}>
           <Icon

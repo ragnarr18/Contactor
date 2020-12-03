@@ -31,7 +31,9 @@ async function populateContacts() {
     console.log('populateContacts');
     for (let i = 0; i < populus.length; i++) {
       await setupDirectory();
-      const item = { name: populus[i].name, phone: populus[i].phone, image: populus[i].image };
+      const item = {
+        name: populus[i].name, phone: populus[i].phone, image: populus[i].image, fileName: `${newName}${populus[i].phone}.json`,
+      };
       const newName = populus[i].name.replace(/\s/g, '').toLowerCase();
       // console.log(newStr.toLowerCase());
       // console.log(`${contactsDirectory}/${newName}${populus[i].phone}.json`);
@@ -125,6 +127,7 @@ async function getContactsByName(fileNames) {
 
   for (let i = 0; i < fileNames.length; i++) {
     const info = await retriveInfo(fileNames[i]);
+    info.fileName = fileNames[i];
     contactsInfo.push(info);
   }
   // console.log("return in getContactsByName", contactsInfo[5].phone)
