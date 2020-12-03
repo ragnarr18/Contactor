@@ -12,9 +12,10 @@ class ContactListContainer extends React.Component {
     this.state = { contacts: [] };
   }
 
-  fetchContactsByName(fileNames) {
-    console.log('fetch');
-    const contactsArray = ContactServices.getContactsByName(fileNames);
+  async fetchContactsByName(fileNames) {
+    // console.log('fetch');
+    const contactsArray = await ContactServices.getContactsByName(fileNames);
+    console.log("this is the contactsArray: ", contactsArray[5].phone);
     this.setState({ contacts: contactsArray, fetched: true });
   }
 
@@ -29,10 +30,10 @@ class ContactListContainer extends React.Component {
     } = this.props;
     const { contacts, fetched } = this.state;
     // const contacts = names;
-    console.log(fetchContacts);
+    // console.log(fetchContacts);
     if (fetchContacts && !fetched ) {
       this.fetchContactsByName(names);
-      console.log('contacts', contacts);
+      // console.log('contacts', contacts);
       // fetched = true;
     }
 

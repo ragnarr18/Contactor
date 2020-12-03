@@ -37,6 +37,7 @@ class ImportContact extends React.Component {
   async componentDidMount() {
     this.setState({ contact: constructContact() });
   }
+
   render() {
     const { isOpen, closeModel } = this.props;
 
@@ -67,6 +68,6 @@ class ImportContact extends React.Component {
 ImportContact.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeModel: PropTypes.func.isRequired,
-}
+};
 
 export default ImportContact;

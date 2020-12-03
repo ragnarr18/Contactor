@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  View, TextInput, Text, ScrollView, TouchableOpacity
+  View, TextInput, Text, ScrollView, TouchableOpacity,
 } from 'react-native';
-import { SearchBar } from 'react-native-elements';
+import { SearchBar, Icon } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import ContactListContainer from '../../components/ContactListContainer';
 import ContactServices from '../../services/ContactServices';

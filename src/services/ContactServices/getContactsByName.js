@@ -27,18 +27,18 @@ async function populateContacts() {
   console.log('populateContacts');
   const populus = [andy, austin, john, johnOther, peter, steve];
   const fileInfo = await FileSystem.getInfoAsync(`file://${contactsDirectory}`);
-  console.log(fileInfo.exists);
+  // console.log(fileInfo.exists);
   if (fileInfo.exists) {
     for (let i = 0; i < populus.length; i++) {
       await setupDirectory();
       const item = { name: populus[i].name, phone: populus[i].phone, image: populus[i].image };
       const newName = populus[i].name.replace(/\s/g, '').toLowerCase();
       // console.log(newStr.toLowerCase());
-      console.log(`${contactsDirectory}/${newName}${populus[i].phone}.json`);
+      // console.log(`${contactsDirectory}/${newName}${populus[i].phone}.json`);
       await FileSystem.writeAsStringAsync(`${contactsDirectory}/${newName}${populus[i].phone}.json`, JSON.stringify(item));
     }
   }
-  console.log('populateContacts complete');
+  // console.log('populateContacts complete');
   return true;
 }
 
@@ -49,7 +49,7 @@ async function retriveInfo(user) {
   // await setupDirectory();
   // await FileSystem.writeAsStringAsync(`${contactsDirectory}/${user}`, JSON.stringify(currentUser) )
   const fileInfo = await FileSystem.getInfoAsync(`${contactsDirectory}/${user}`);
-  console.log(fileInfo);
+  // console.log(fileInfo);
   try {
     const result = await FileSystem.readAsStringAsync(`${contactsDirectory}/${user}`);
     // console.log("result", result);
@@ -123,10 +123,10 @@ async function getContactsByName(fileNames) {
   // });
 
   for (var i = 0; i < fileNames.length; i++) {
-    const info = retriveInfo(fileNames[i])
+    const info = await retriveInfo(fileNames[i])
     contactsInfo.push(info);
   }
-  console.log(contactsInfo)
+  console.log("return in getContactsByName", contactsInfo[5].phone)
   return contactsInfo;
   // console.log('item', contactsInfo.length);
   // return contactsInfo;
