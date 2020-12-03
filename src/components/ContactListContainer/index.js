@@ -12,17 +12,20 @@ class ContactListContainer extends React.Component {
     this.state = { contacts: [] };
   }
 
-  async fetchContactsByName(fileNames) {
-    // console.log('fetch');
-    const contactsArray = await ContactServices.getContactsByName(fileNames);
-    console.log("this is the contactsArray: ", contactsArray[5].phone);
-    this.setState({ contacts: contactsArray, fetched: true });
+  componentDidUpdate(prevProps) {
+    const { names } = this.props;
+    // const { names } = prevProps;
+    if (names !== prevProps.names) {
+      this.setState({ fetched: false });
+    }
   }
 
-  // compnentDidMount() {
-  //   const { names } = this.props;
-  //   this.fetchUsersByName(names);
-  // }
+  async fetchContactsByName(fileNames) {
+    console.log('fetch');
+    const contactsArray = await ContactServices.getContactsByName(fileNames);
+    console.log('this is the contactsArray : ', contactsArray.length);
+    this.setState({ contacts: contactsArray, fetched: true });
+  }
 
   render() {
     const {
@@ -31,7 +34,7 @@ class ContactListContainer extends React.Component {
     const { contacts, fetched } = this.state;
     // const contacts = names;
     // console.log(fetchContacts);
-    if (fetchContacts && !fetched ) {
+    if (fetchContacts && !fetched) {
       this.fetchContactsByName(names);
       // console.log('contacts', contacts);
       // fetched = true;
@@ -56,11 +59,12 @@ class ContactListContainer extends React.Component {
     return (
       <View>
         <View>
-          {this.props.names.map((name) => (
+          {this.state.contacts.map((contact) => (
             <ContactListItem
-              key={name}
-              name={name}
-              image={image}
+              key={contact.name}
+              name={contact.name}
+              image={contact.image}
+              phone={contact.phone}
               navigation={navigation}
             />
           ))}

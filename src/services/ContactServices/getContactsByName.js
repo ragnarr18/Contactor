@@ -24,11 +24,11 @@ const setupDirectory = async () => {
 //   to: newLocation,
 // });
 async function populateContacts() {
-  console.log('populateContacts');
   const populus = [andy, austin, john, johnOther, peter, steve];
   const fileInfo = await FileSystem.getInfoAsync(`file://${contactsDirectory}`);
   // console.log(fileInfo.exists);
-  if (fileInfo.exists) {
+  if (!fileInfo.exists) {
+    console.log('populateContacts');
     for (let i = 0; i < populus.length; i++) {
       await setupDirectory();
       const item = { name: populus[i].name, phone: populus[i].phone, image: populus[i].image };
@@ -126,7 +126,7 @@ async function getContactsByName(fileNames) {
     const info = await retriveInfo(fileNames[i])
     contactsInfo.push(info);
   }
-  console.log("return in getContactsByName", contactsInfo[5].phone)
+  // console.log("return in getContactsByName", contactsInfo[5].phone)
   return contactsInfo;
   // console.log('item', contactsInfo.length);
   // return contactsInfo;
