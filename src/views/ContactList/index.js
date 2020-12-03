@@ -65,10 +65,10 @@ class ContactList extends React.Component {
         </View>
         <View style={styles.bottomBorder}>
           <View style={styles.textWrap}>
-            <TouchableOpacity onPress={() => this.setState({ isImportModalOpen: true })}>
+            <TouchableOpacity onPress={() => this.setState({ isContactModalOpen: true })}>
               <Icon name="add" size={30} />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.setState({ isContactModalOpen: true })}>
+            <TouchableOpacity onPress={() => this.setState({ isImportModalOpen: true })}>
               <Icon name="contacts" type="material" size={30} />
             </TouchableOpacity>
           </View>
