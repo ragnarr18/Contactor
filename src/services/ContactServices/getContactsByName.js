@@ -43,6 +43,7 @@ async function populateContacts() {
 }
 
 async function retriveInfo(user) {
+  // await FileSystem.deleteAsync(`${contactsDirectory}`);
   const search = await populateContacts();
   // let result = null;
   // var currentUser = {"phoneNumber": 112, "name": "ragnar"}
