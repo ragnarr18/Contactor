@@ -39,6 +39,7 @@ class ContactListItem extends React.Component {
       phone,
       navigation,
     } = this.props;
+    // {console.log("this is the image", image)};
     const { navigate } = navigation;
 
     return (
@@ -48,7 +49,8 @@ class ContactListItem extends React.Component {
             <Image
               style={[styles.icon, styles.verticalAlign]}
               resizeMode="cover"
-              source={profileIcon}
+              // source={{uri: image}}
+              source={{uri: `${image}`}}
             />
             <Text style={styles.name}>
               {name}
@@ -95,7 +97,7 @@ class ContactListItem extends React.Component {
 
 ContactListItem.defaultProps = {
   phone: PropTypes.string = 'Missing',
-  image: PropTypes.string = 'https://i.redd.it/yvq5a4xboh931.png',
+  // image: PropTypes.string = 'https://i.redd.it/yvq5a4xboh931.png',
 };
 
 ContactListItem.propTypes = {

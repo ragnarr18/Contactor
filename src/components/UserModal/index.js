@@ -23,17 +23,23 @@ class EditUser extends React.Component {
     }
   }
 
-  createContact() {
-    console.log("close")
-    // fileServices.createContact()
-    const { createContact, closeModal } = this.props;
-    closeModal();
+  async createContact() {
+    const { name, phone, imageObject } = this.state;
+    const image = `data:image/jpeg;base64,${imageObject.file}`;
+    const newContact = { name, phone, image };
+    // console.log( imageBase64 );
+    await fileServices.createContact(newContact);
+    const { createContact } = this.props;
+    this.setState({ name: '', phone: '', imageObject: '' });
+    createContact();
     // return;
     // createContact();
   }
 
   saveChanges() {
     // fileServices.saveChanges()
+    const { name, phone } = this.state;
+
     const { saveChanges } = this.props;
     // saveChanges();
   }
@@ -73,7 +79,7 @@ class EditUser extends React.Component {
 
     // const createdImage = await fileServices.getImage(imageLocation);
     // console.log(createdImage);
-    this.setState({ image: newImage, loadImage: false, photoSet: true });
+    this.setState({ imageObject: newImage, loadImage: false, photoSet: true });
     // isModalOpen : false
   }
 
@@ -82,14 +88,14 @@ class EditUser extends React.Component {
   }
 
   updatePhone(text) {
-    this.setState({ phoneNumber: text });
+    this.setState({ phone: text });
   }
 
   render() {
     const {
       image, isCreate, isOpen, closeModal, setImage,
     } = this.props;
-    const { name, phoneNumber } = this.state;
+    const { name, phone } = this.state;
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
         <Text style={Styles.title}>Edit Contact</Text>
@@ -97,7 +103,7 @@ class EditUser extends React.Component {
           && (
           <Image
             style={Styles.image}
-            source={{ uri: `data:image/jpeg;base64,${this.state.image.file}` }}
+            source={{ uri: `data:image/jpeg;base64,${this.state.imageObject.file}` }}
           />
           )}
         <View style={Styles.iconBox}>
@@ -111,7 +117,7 @@ class EditUser extends React.Component {
         <View style={Styles.textWrap}>
           <Text>Name: </Text>
           <TextInput
-            defaultValue={name}
+            value={name}
             onChangeText={(text) => this.updateName(text)}
             style={Styles.textBox}
           />
@@ -119,7 +125,7 @@ class EditUser extends React.Component {
         <View style={Styles.textWrap}>
           <Text>Phone: </Text>
           <TextInput
-            defaultValue={phoneNumber}
+            value={phone}
             onChangeText={(text) => this.updatePhone(text)}
             style={Styles.textBox}
           />
