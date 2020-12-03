@@ -27,7 +27,7 @@ async function populateContacts() {
   const populus = [andy, austin, john, johnOther, peter, steve];
   const fileInfo = await FileSystem.getInfoAsync(`file://${contactsDirectory}`);
   // console.log(fileInfo.exists);
-  if (!fileInfo.exists) {
+  if (fileInfo.exists) {
     console.log('populateContacts');
     for (let i = 0; i < populus.length; i++) {
       await setupDirectory();
@@ -43,6 +43,7 @@ async function populateContacts() {
 }
 
 async function retriveInfo(user) {
+  // await FileSystem.deleteAsync(`${contactsDirectory}`);
   const search = await populateContacts();
   // let result = null;
   // var currentUser = {"phoneNumber": 112, "name": "ragnar"}

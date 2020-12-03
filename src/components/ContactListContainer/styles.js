@@ -6,6 +6,6 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    height: height * 1.2,
+    height: height * 1,
   },
 });
