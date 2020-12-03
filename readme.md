@@ -15,21 +15,24 @@ contributers:
   ragnarr18: Ragnar Geir Ragnarsson
 
 feats:
-
+ - as specified by the requirements
 
 extra feats:
+  - import contacts
+  - add image with camera or photo import
+  - user can use it to call someone
 
 
+task fyrir 4.12
+  - fara yfir requirements og vera 100% að allt sé í appinu sem þarf að vera
+  - gera prufur
+  - limit testa, reyna að krasha forritið
+  - stroka út óþarfa kóða
+  - losa okkur við warnings
 
-uppskiptun verkefna:
-  bjarni:  navigation og listi yfir contacts + create contact
-   arnar:  "a user should be able to search for contacts by their name"
-     rgr:  contact detail screen, modify information
+spurningar fyrir dæmatímakennara:
+  - hvernig er hægt að byrja frá scratch í Expo File System, s.s. eyða files og flr
+  - hvar er Expo file system geymt? er það permanent
+  - Warning: Cannot update during an existing state transition (such as within `render`). Render methods should be a pure functio
 
-     all:  File-system setup, extras
-            extrax: import contacts, add image with camera or photo import, user can use it to call someone
-
-
-Ragnar note:
-  - create is a modal
-  - edit/modify is navigated => a view that has components
+n of props and state.
