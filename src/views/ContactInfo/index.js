@@ -51,7 +51,7 @@ class ContactInfo extends React.Component {
         <Text>dial button</Text>
         <UserModal
           isOpen={isEditModalOpen}
-          isCreate // change to false when done
+          isCreate={false}
           closeModal={() => this.setState({ isEditModalOpen: false })}
           setImage={(currentImage) => this.setState({ image: currentImage, photoReady: true })}
           deleteContact={() => this.deleteContact()}

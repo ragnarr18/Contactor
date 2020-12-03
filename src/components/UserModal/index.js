@@ -24,27 +24,30 @@ class EditUser extends React.Component {
   }
 
   createContact() {
+    console.log("close")
     // fileServices.createContact()
-    const { createContact } = this.props;
-    createContact();
+    const { createContact, closeModal } = this.props;
+    closeModal();
+    // return;
+    // createContact();
   }
 
   saveChanges() {
     // fileServices.saveChanges()
     const { saveChanges } = this.props;
-    saveChanges();
+    // saveChanges();
   }
 
   cancelCreate() {
     // reset values to ''
     const { cancelCreate } = this.props;
-    cancelCreate();
+    // cancelCreate();
   }
 
   cancelChanges() {
     // reset values to the original
     const { cancelChanges } = this.props;
-    cancelChanges();
+    // cancelChanges();
   }
 
   deleteContact() {
@@ -52,7 +55,7 @@ class EditUser extends React.Component {
     // probably the fileName of the contact
     // fileServices.deleteContact(identifier);
     const { deleteContact } = this.props;
-    deleteContact();
+    // deleteContact();
   }
 
   async takePhoto() {
@@ -126,8 +129,10 @@ class EditUser extends React.Component {
           && (
             <Button title="DELETE" onPress={() => this.deleteContact()} />
           )}
-          <Button title="SAVE" onPress={closeModal} />
-          <Button title="CANCEL" onPress={closeModal} />
+          <Button title="SAVE" onPress={isCreate ? () => this.createContact() : () => this.saveChanges()} />
+          <Button title="CANCEL" onPress={isCreate ? () => this.cancelCreate() : () => this.cancelChanges()} />
+          {/* <Button title="SAVE" onPress={() => this.createContact(closeModal)} />
+          <Button title="CANCEL" onPress={closeModal} /> */}
         </View>
       </Modal>
     );
