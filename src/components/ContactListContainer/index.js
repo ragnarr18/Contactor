@@ -68,6 +68,7 @@ class ContactListContainer extends React.Component {
                 image={contact.image}
                 phone={contact.phone}
                 fileName={contact.fileName}
+                fetchContacts={fetchContacts}
                 navigation={navigation}
               />
             ))}

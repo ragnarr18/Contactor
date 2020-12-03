@@ -38,10 +38,16 @@ class EditUser extends React.Component {
     closeAndFetch();
   }
 
-  saveChanges() {
+  async saveChanges() {
     // fileServices.saveChanges()
-    const { fileName, name, phone } = this.state;
-
+    const {
+      name, phone, image,
+    } = this.state;
+    const { fileName } = this.props;
+    const editedContact = {
+      name, phone, image, fileName,
+    };
+    await fileServices.editContact(editedContact);
     const { closeAndFetch } = this.props;
     this.setState({
       name: '', phone: '', imageObject: '', valuesSet: false,

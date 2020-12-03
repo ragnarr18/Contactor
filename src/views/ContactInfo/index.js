@@ -34,17 +34,25 @@ class ContactInfo extends React.Component {
   }
 
   openEditModal() {
-    console.log("this fileName: ", this.props.navigation.state.params.fileName);
-    console.log("this phone: ", this.props.navigation.state.params.phone);
+    console.log('this fileName: ', this.props.navigation.state.params.fileName);
+    console.log('this phone: ', this.props.navigation.state.params.phone);
 
     this.setState({ isEditModalOpen: true });
+  }
+
+  saveChanges(fetchContacts) {
+    const { navigation } = this.props;
+    this.setState({ isEditModalOpen: false });
+    fetchContacts()
+    //callback to ContactList
+    navigation.popToTop();
   }
 
   render() {
     // console.log("made it")
     const { navigation } = this.props;
     const {
-      name, phone, image, fileName,
+      name, phone, image, fileName, fetchContacts
     } = navigation.state.params;
     const { photoReady, isEditModalOpen } = this.state;
 
@@ -84,10 +92,17 @@ class ContactInfo extends React.Component {
           name={name}
           phone={phone}
           image={image}
+          fileName={fileName}
           isCreate={false}
           closeModal={() => this.setState({ isEditModalOpen: false })}
           setImage={(currentImage) => this.setState({ image: currentImage })}
           deleteContact={() => this.deleteContact()}
+          closeAndFetch={() => this.saveChanges(fetchContacts)}
+          // closeAndFetch={
+          //   () => this.setState({
+          //     isEditModalOpen: false,
+          //   })
+          // }
         />
       </View>
     );

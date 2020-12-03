@@ -38,6 +38,7 @@ class ContactListItem extends React.Component {
       phone,
       fileName,
       navigation,
+      fetchContacts,
     } = this.props;
     // {console.log("this is the image", image)};
     const { navigate } = navigation;
@@ -82,7 +83,9 @@ class ContactListItem extends React.Component {
               />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigate('ContactInfo', { name, phone, image, ready, fileName })}
+              onPress={() => navigate('ContactInfo', {
+                name, phone, image, ready, fileName, fetchContacts,
+              })}
             >
               <Image
                 style={[styles.icon, { margin: 10 }]}
