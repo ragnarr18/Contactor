@@ -9,7 +9,7 @@ import styles from './styles';
 class ContactListContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { contacts: [] };
+    this.state = { contacts: [], fetched: false };
   }
 
   componentDidUpdate(prevProps) {
@@ -31,7 +31,7 @@ class ContactListContainer extends React.Component {
     const {
       names, image, photo, navigation, fetchContacts,
     } = this.props;
-    const { contacts, fetched } = this.state;
+    const { fetched } = this.state;
     // const contacts = names;
     // console.log(fetchContacts);
     if (fetchContacts && !fetched) {
@@ -58,8 +58,7 @@ class ContactListContainer extends React.Component {
 
     return (
       <View>
-<<<<<<< HEAD
-        {this.state.contacts.length > 1
+        {this.state.contacts.length > 0
           && (
           <View>
             {this.state.contacts.map((contact) => (
@@ -74,19 +73,6 @@ class ContactListContainer extends React.Component {
           </View>
           )}
 
-=======
-        <View>
-          {this.state.contacts.map((contact) => (
-            <ContactListItem
-              key={contact.name}
-              name={contact.name}
-              image={contact.image}
-              phone={contact.phone}
-              navigation={navigation}
-            />
-          ))}
-        </View>
->>>>>>> c6a73602ce33473dac2237bcf13a544e29329d94
       </View>
     );
   }
