@@ -23,12 +23,12 @@ class EditUser extends React.Component {
     }
   }
 
-  createContact(closeModal) {
+  createContact() {
     console.log("close")
     // fileServices.createContact()
-    // const { createContact, closeModal } = this.props;
+    const { createContact, closeModal } = this.props;
     closeModal();
-    return;
+    // return;
     // createContact();
   }
 
@@ -129,10 +129,10 @@ class EditUser extends React.Component {
           && (
             <Button title="DELETE" onPress={() => this.deleteContact()} />
           )}
-          {/* <Button title="SAVE" onPress={isCreate ? this.createContact() : this.saveChanges()} />
-          <Button title="CANCEL" onPress={isCreate ? this.cancelCreate() : this.cancelChanges()} /> */}
-          <Button title="SAVE" onPress={() => this.createContact(closeModal)} />
-          <Button title="CANCEL" onPress={closeModal} />
+          <Button title="SAVE" onPress={isCreate ? () => this.createContact() : () => this.saveChanges()} />
+          <Button title="CANCEL" onPress={isCreate ? () => this.cancelCreate() : () => this.cancelChanges()} />
+          {/* <Button title="SAVE" onPress={() => this.createContact(closeModal)} />
+          <Button title="CANCEL" onPress={closeModal} /> */}
         </View>
       </Modal>
     );
