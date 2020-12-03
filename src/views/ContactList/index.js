@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import ContactListContainer from '../../components/ContactListContainer';
 import ContactServices from '../../services/ContactServices';
 import styles from './styles';
+import ContactImport from '../../components/ContactImport';
 import ImportContact from '../../components/importContact';
 import ContactModal from '../../components/UserModal';
 
@@ -78,7 +79,7 @@ class ContactList extends React.Component {
           isCreate // change to false when done
           closeModal={() => this.setState({ isContactModalOpen: false })}
           setImage={(currentImage) => this.setState({ image: currentImage, photoReady: true })}
-          // createContact={() => {}}
+          createContact={() => this.setState({ isContactModalOpen: false, names: ContactServices.getAllNames()})}
         />
         <ImportContact
           isOpen={isImportModalOpen}
