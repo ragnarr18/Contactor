@@ -125,6 +125,7 @@ class EditUser extends React.Component {
         <View style={Styles.textWrap}>
           <Text>Phone: </Text>
           <TextInput
+            keyboardType="numeric"
             value={phone}
             onChangeText={(text) => this.updatePhone(text)}
             style={Styles.textBox}

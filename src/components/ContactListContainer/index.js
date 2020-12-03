@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import ContactListItem from '../ContactListItem';
-// import ContactServices from '../../services/ContactServices';
 import ContactServices from '../../services/ContactServices';
 import styles from './styles';
 
@@ -58,7 +57,7 @@ class ContactListContainer extends React.Component {
     // )));
 
     return (
-      <View>
+      <View style={styles.container}>
         {this.state.contacts.length > 0
           && (
           <View>

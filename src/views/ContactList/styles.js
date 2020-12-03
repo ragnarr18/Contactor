@@ -7,10 +7,19 @@ export default StyleSheet.create({
     margin: 10,
   },
   bottomBorder: {
+    height: 40,
     borderBottomWidth: 1,
+  },
+  textWrap: {
+    flex: 0.1,
+    flexWrap: 'wrap',
+    margin: 5,
   },
   scrollView: {
     flex: 1,
     height: 190,
+  },
+  importContact: {
+    flexDirection: 'row',
   },
 });

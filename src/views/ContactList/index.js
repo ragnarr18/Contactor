@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import ContactListContainer from '../../components/ContactListContainer';
 import ContactServices from '../../services/ContactServices';
 import styles from './styles';
+import ContactImport from '../../components/ContactImport';
 import ImportContact from '../../components/importContact';
 import ContactModal from '../../components/UserModal';
 
@@ -55,13 +56,6 @@ class ContactList extends React.Component {
       <View>
         <View styles={styles.bottomBorder}>
           <Text style={styles.header}>ALL CONTACTS</Text>
-          <TouchableOpacity onPress={() => this.setState({ isImportModalOpen: true })}>
-            <Icon name="add" size={30} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.setState({ isContactModalOpen: true })}>
-            <Icon name="contacts" type="material" size={30} />
-          </TouchableOpacity>
-          <Icon name="add" type="material" size={30} />
           <SearchBar
             round
             value={this.state.searchTerm}
@@ -69,6 +63,16 @@ class ContactList extends React.Component {
             onClear={() => this.setState({ searchTerm: '' })}
             placeholder="Search for a contact!"
           />
+        </View>
+        <View style={styles.bottomBorder}>
+          <View style={styles.textWrap}>
+            <TouchableOpacity onPress={() => this.setState({ isImportModalOpen: true })}>
+              <Icon name="add" size={30} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.setState({ isContactModalOpen: true })}>
+              <Icon name="contacts" type="material" size={30} />
+            </TouchableOpacity>
+          </View>
         </View>
         <ContactModal
           isOpen={isContactModalOpen}
