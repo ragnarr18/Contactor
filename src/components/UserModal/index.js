@@ -13,7 +13,7 @@ import * as fileServices from '../../services/FileServices';
 class EditUser extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { valuesSet: false };
   }
 
   async selectFromCameraRoll() {
@@ -26,9 +26,9 @@ class EditUser extends React.Component {
   async createContact() {
     const { name, phone, imageObject } = this.state;
     let image = '';
-    console.log("isUndefined: ", (imageObject !== undefined) );
+    console.log('isUndefined: ', (imageObject !== undefined));
     if (imageObject !== undefined) {
-       image = `data:image/jpeg;base64,${imageObject.file}`;
+      image = `data:image/jpeg;base64,${imageObject.file}`;
     }
     const newContact = { name, phone, image };
     console.log(imageObject);
@@ -40,7 +40,7 @@ class EditUser extends React.Component {
 
   saveChanges() {
     // fileServices.saveChanges()
-    const { fileName ,name, phone } = this.state;
+    const { fileName, name, phone } = this.state;
 
     const { closeAndFetch } = this.props;
     this.setState({ name: '', phone: '', imageObject: '' });
@@ -95,14 +95,21 @@ class EditUser extends React.Component {
     this.setState({ phone: text });
   }
 
+  setValues() {
+    const { name, phone, image } = this.props;
+    this.setState({
+      name, phone, image, valuesSet: true,
+    });
+  }
+
   render() {
     const {
       image, isCreate, isOpen, closeModal, setImage, defaultValuesSet,
     } = this.props;
-    const { name, phone } = this.state;
-    if(!defaultValuesSet){
-
-    }
+    const { name, phone, valuesSet } = this.state;
+    // if (!defaultValuesSet && !valuesSet) {
+    //   this.setValues();
+    // }
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
         <Text style={Styles.title}>Contact Info</Text>
