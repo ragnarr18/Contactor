@@ -47,6 +47,8 @@ class EditUser extends React.Component {
   cancelCreate() {
     // reset values to ''
     const { cancelCreate } = this.props;
+    this.setState({ name: '', phone: '', imageObject: '' });
+    // STILL NEED TO CLOSE THE MODAL
     // cancelCreate();
   }
 
@@ -98,7 +100,8 @@ class EditUser extends React.Component {
     const { name, phone } = this.state;
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
-        <Text style={Styles.title}>Edit Contact</Text>
+        <Text style={Styles.title}>Contact Info</Text>
+        <Text>Profile Image:</Text>
         {this.state.photoSet // or display default image
           && (
           <Image
@@ -134,10 +137,19 @@ class EditUser extends React.Component {
         <View style={Styles.textWrap}>
           {!isCreate
           && (
-            <Button title="DELETE" onPress={() => this.deleteContact()} />
+            <Button
+              title="DELETE"
+              onPress={() => this.deleteContact()}
+            />
           )}
-          <Button title="SAVE" onPress={isCreate ? () => this.createContact() : () => this.saveChanges()} />
-          <Button title="CANCEL" onPress={isCreate ? () => this.cancelCreate() : () => this.cancelChanges()} />
+          <Button
+            title="SAVE"
+            onPress={isCreate ? () => this.createContact() : () => this.saveChanges()}
+          />
+          <Button
+            title="CANCEL"
+            onPress={isCreate ? () => this.cancelCreate() : () => this.cancelChanges()}
+          />
           {/* <Button title="SAVE" onPress={() => this.createContact(closeModal)} />
           <Button title="CANCEL" onPress={closeModal} /> */}
         </View>
