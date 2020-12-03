@@ -37,8 +37,7 @@ class ContactInfo extends React.Component {
     // console.log("made it")
     const { navigation } = this.props;
     const { name, phone, image } = navigation.state.params;
-    const { photoReady, isEditModalOpen } = this.state;
-
+    const { isEditModalOpen } = this.state;
     return (
       <View>
         <TouchableOpacity
@@ -58,7 +57,6 @@ class ContactInfo extends React.Component {
           name={name}
           phone={phone}
           image={image}
-          photoReady={photoReady}
         />
         <View style={styles.dial}>
           <Icon
@@ -74,10 +72,9 @@ class ContactInfo extends React.Component {
           name={name}
           phone={phone}
           image={image}
-          photoReady
           isCreate={false}
           closeModal={() => this.setState({ isEditModalOpen: false })}
-          setImage={(currentImage) => this.setState({ image: currentImage, photoReady: true })}
+          setImage={(currentImage) => this.setState({ image: currentImage })}
           deleteContact={() => this.deleteContact()}
         />
       </View>

@@ -81,7 +81,7 @@ class ContactListItem extends React.Component {
               />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigate('ContactInfo', { name, phone, image, ready })}
+              onPress={() => navigate('ContactInfo', { name, phone, image })}
             >
               <Image
                 style={[styles.icon, { margin: 10 }]}
