@@ -11,6 +11,6 @@ export default StyleSheet.create({
   },
   scrollView: {
     flex: 1,
-    height: 90,
+    height: 190,
   },
 });

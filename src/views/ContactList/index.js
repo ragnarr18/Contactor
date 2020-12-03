@@ -50,11 +50,7 @@ class ContactList extends React.Component {
     return (
       <View>
         <View styles={styles.bottomBorder}>
-          <Text style={styles.header}>ALL CONTACTS</Text>
-          <TouchableOpacity onPress={() => this.setState({ isImportModalOpen: true })}>
-            <Icon name="add" size={30} />
-          </TouchableOpacity>
-          <Icon name="contacts" type="material" size={30} />
+          {/* <Text style={styles.header}>ALL CONTACTS</Text> */}
           <SearchBar
             round
             value={this.state.searchTerm}
@@ -62,6 +58,12 @@ class ContactList extends React.Component {
             onClear={() => this.setState({ searchTerm: '', fetchContacts: true })}
             placeholder="Search for a contact!"
           />
+        </View>
+        <View>
+          <TouchableOpacity onPress={() => this.setState({ isImportModalOpen: true })}>
+            <Icon name="add" size={30} />
+          </TouchableOpacity>
+          <Icon name="contacts" type="material" size={30} />
         </View>
         <ImportContact
           isOpen={isImportModalOpen}
