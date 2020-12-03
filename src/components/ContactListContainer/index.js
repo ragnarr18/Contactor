@@ -57,7 +57,7 @@ class ContactListContainer extends React.Component {
     // )));
 
     return (
-      <View>
+      <View style={styles.container}>
         {this.state.contacts.length > 0
           && (
           <View>
