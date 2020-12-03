@@ -14,7 +14,6 @@ class ContactInfo extends React.Component {
       name: '',
       phoneNumber: '',
       isEditModalOpen: false,
-      photoReady: false,
     };
     const { image, name, phone } = this.props;
     this.setNewInfo(image, name, phone);
@@ -38,10 +37,7 @@ class ContactInfo extends React.Component {
     // console.log("made it")
     const { navigation } = this.props;
     const { name, phone, image } = navigation.state.params;
-    const {
-      isEditModalOpen,
-    } = this.props;
-    const { photoReady } = this.state;
+    const { photoReady, isEditModalOpen } = this.state;
 
     return (
       <View>
@@ -76,7 +72,7 @@ class ContactInfo extends React.Component {
         <UserModal
           isOpen={isEditModalOpen}
           name={name}
-          phoneNumber={phone}
+          phone={phone}
           image={image}
           photoReady
           isCreate={false}
