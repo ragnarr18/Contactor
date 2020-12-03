@@ -13,4 +13,7 @@ export default StyleSheet.create({
     flex: 1,
     height: 90,
   },
+  importContact: {
+    flexDirection: 'row',
+  },
 });

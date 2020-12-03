@@ -3,7 +3,7 @@ import data from '../../resources/USERS.json';
 import andy from '../../resources/contacts/andysnow3554141.json';
 import austin from '../../resources/contacts/austinharlow9471924.json';
 import john from '../../resources/contacts/johndoe5008000.json';
-import johnOther from '../../resources/contacts/johnotherdoe112.json';
+import johnOther from '../../resources/contacts/johnotherdoe8984211.json';
 import peter from '../../resources/contacts/peterparker5910492.json';
 import steve from '../../resources/contacts/stevegoodman5023923.json';
 
@@ -54,7 +54,7 @@ async function retriveInfo(user) {
     const result = await FileSystem.readAsStringAsync(`${contactsDirectory}/${user}`);
     // console.log("result", result);
     const jsonResult = JSON.parse(result);
-    console.log(jsonResult.phone);
+    // console.log(jsonResult.phone);
     return jsonResult;
   } catch (e) {
     console.log('error', e);

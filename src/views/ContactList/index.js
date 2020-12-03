@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import ContactListContainer from '../../components/ContactListContainer';
 import ContactServices from '../../services/ContactServices';
 import styles from './styles';
-import ImportContact from '../../components/importContact';
+import ContactImport from '../../components/ContactImport';
 
 class ContactList extends React.Component {
   constructor(props, context) {
@@ -52,9 +52,9 @@ class ContactList extends React.Component {
         <View styles={styles.bottomBorder}>
           <Text style={styles.header}>ALL CONTACTS</Text>
           <TouchableOpacity onPress={() => this.setState({ isImportModalOpen: true })}>
-            <Icon name="add" size={30} />
+            <Icon name="contacts" size={30} />
           </TouchableOpacity>
-          <Icon name="contacts" type="material" size={30} />
+          <Icon name="add" type="material" size={30} />
           <SearchBar
             round
             value={this.state.searchTerm}
@@ -63,7 +63,7 @@ class ContactList extends React.Component {
             placeholder="Search for a contact!"
           />
         </View>
-        <ImportContact
+        <ContactImport
           isOpen={isImportModalOpen}
           closeModel={() => this.setState({ isImportModalOpen: false })}
         />
