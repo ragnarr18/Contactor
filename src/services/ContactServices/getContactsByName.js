@@ -9,7 +9,7 @@ import steve from '../../resources/contacts/stevegoodman5023923.json';
 
 const { users } = data;
 // const directory = './src/resources/contacts/';
-const directory = '../../resources/contacts';
+// const directory = '../../resources/contacts';
 const contactsDirectory = `${FileSystem.documentDirectory}contacts`;
 
 const setupDirectory = async () => {
@@ -27,7 +27,7 @@ async function populateContacts() {
   const populus = [andy, austin, john, johnOther, peter, steve];
   const fileInfo = await FileSystem.getInfoAsync(`file://${contactsDirectory}`);
   // console.log(fileInfo.exists);
-  if (fileInfo.exists) {
+  if (!fileInfo.exists) {
     console.log('populateContacts');
     for (let i = 0; i < populus.length; i++) {
       await setupDirectory();
@@ -35,7 +35,7 @@ async function populateContacts() {
       const newName = populus[i].name.replace(/\s/g, '').toLowerCase();
       // console.log(newStr.toLowerCase());
       // console.log(`${contactsDirectory}/${newName}${populus[i].phone}.json`);
-      await FileSystem.writeAsStringAsync(`${contactsDirectory}/${newName}${populus[i].phone}.json`, JSON.stringify(item));
+      await FileSystem.writeAsStringAsync(`file://${contactsDirectory}/${newName}${populus[i].phone}.json`, JSON.stringify(item));
     }
   }
   // console.log('populateContacts complete');
@@ -49,10 +49,10 @@ async function retriveInfo(user) {
   // var currentUser = {"phoneNumber": 112, "name": "ragnar"}
   // await setupDirectory();
   // await FileSystem.writeAsStringAsync(`${contactsDirectory}/${user}`, JSON.stringify(currentUser) )
-  const fileInfo = await FileSystem.getInfoAsync(`${contactsDirectory}/${user}`);
+  const fileInfo = await FileSystem.getInfoAsync(`file://${contactsDirectory}/${user}`);
   // console.log(fileInfo);
   try {
-    const result = await FileSystem.readAsStringAsync(`${contactsDirectory}/${user}`);
+    const result = await FileSystem.readAsStringAsync(`file://${contactsDirectory}/${user}`);
     // console.log("result", result);
     const jsonResult = JSON.parse(result);
     // console.log(jsonResult.phone);
@@ -104,7 +104,7 @@ async function retriveInfo(user) {
 // }
 
 async function getContactsByName(fileNames) {
-  console.log("getContactsByName");
+  console.log('getContactsByName');
   // const contacts = [];
   const contactsInfo = [];
 
@@ -123,8 +123,8 @@ async function getContactsByName(fileNames) {
   //   console.log('item', contactsInfo.length);
   // });
 
-  for (var i = 0; i < fileNames.length; i++) {
-    const info = await retriveInfo(fileNames[i])
+  for (let i = 0; i < fileNames.length; i++) {
+    const info = await retriveInfo(fileNames[i]);
     contactsInfo.push(info);
   }
   // console.log("return in getContactsByName", contactsInfo[5].phone)
