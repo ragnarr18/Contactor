@@ -7,13 +7,21 @@ export default StyleSheet.create({
     margin: 10,
   },
   bottomBorder: {
-    height: 40,
+    height: 60,
     borderBottomWidth: 1,
+    alignItems: 'center',
   },
   textWrap: {
     flex: 0.1,
     flexWrap: 'wrap',
     margin: 5,
+    alignItems: 'center',
+  },
+  textWrapLeft: {
+    alignItems: 'flex-start',
+  },
+  textWrapRight: {
+    alignItems: 'flex-end',
   },
   scrollView: {
     flex: 1,
@@ -21,5 +29,11 @@ export default StyleSheet.create({
   },
   importContact: {
     flexDirection: 'row',
+  },
+  leftIcon: {
+    borderWidth: 5,
+  },
+  rightIcon: {
+    borderWidth: 5,
   },
 });

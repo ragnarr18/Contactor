@@ -19,6 +19,7 @@ export default StyleSheet.create({
   iconBox: {
     flex: 0.3,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   textWrap: {
     flex: 0.1,
