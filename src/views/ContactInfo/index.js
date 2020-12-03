@@ -29,20 +29,17 @@ class ContactInfo extends React.Component {
   render() {
     // console.log("made it")
     const { navigation } = this.props;
-    const { name, phoneNumber } = navigation.state.params;
+    const { name, phone, image } = navigation.state.params;
     const {
-      image,
       isEditModalOpen,
-      photoReady,
-    } = this.state;
+    } = this.props;
 
     return (
       <View>
         <User
           name={name}
-          phoneNumber={phoneNumber}
+          phone={phone}
           image={image}
-          photoReady={photoReady}
         />
         <Button
           title="Edit"
@@ -51,6 +48,10 @@ class ContactInfo extends React.Component {
         <Text>dial button</Text>
         <UserModal
           isOpen={isEditModalOpen}
+          name={name}
+          phoneNumber={phone}
+          image={image}
+          photoReady
           isCreate={false}
           closeModal={() => this.setState({ isEditModalOpen: false })}
           setImage={(currentImage) => this.setState({ image: currentImage, photoReady: true })}

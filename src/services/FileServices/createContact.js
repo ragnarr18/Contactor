@@ -18,7 +18,7 @@ async function createContact(contact) {
   const newName = contact.name.replace(/\s/g, '').toLowerCase();
   // const fileName = `${contactsDirectory}/${newName}${contact.phone}.json`;
   const id = uuidv4();
-  const fileName = `${contactsDirectory}/{id}.json`;
+  const fileName = `${contactsDirectory}/${id}.json`;
   // console.log(newStr.toLowerCase());
   // console.log(`${contactsDirectory}/${newName}${populus[i].phone}.json`);
   // console.log(contact.image);
@@ -28,6 +28,7 @@ async function createContact(contact) {
   await FileSystem.writeAsStringAsync(fileName, JSON.stringify(newContact));
   const fileInfo = await FileSystem.getInfoAsync(`file://${fileName}`);
   console.log('file created: ', fileInfo.exists);
+  console.log('file uri: ', fileInfo.uri);
 
   // data.users.push({ name: contact.name, fileName: `${newName}${contact.phone}.json` });
   data.users.push({ name: contact.name, fileName: `${id}.json` });

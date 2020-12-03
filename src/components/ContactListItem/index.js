@@ -49,7 +49,7 @@ class ContactListItem extends React.Component {
               style={[styles.icon, styles.verticalAlign]}
               resizeMode="cover"
               // source={{uri: image}}
-              source={{uri: `${image}`}}
+              source={{ uri: `${image}` }}
             />
             <Text style={styles.name}>
               {name}
@@ -80,7 +80,7 @@ class ContactListItem extends React.Component {
               />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigate('ContactInfo', { name, phoneNumber: phone, image })}
+              onPress={() => navigate('ContactInfo', { name, phone, image })}
             >
               <Image
                 style={[styles.icon, { margin: 10 }]}

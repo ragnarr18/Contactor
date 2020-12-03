@@ -79,14 +79,18 @@ class ContactList extends React.Component {
           isOpen={isContactModalOpen}
           isCreate // change to false when done
           closeModal={() => this.setState({ isContactModalOpen: false })}
-          cancelModal={() => this.setState({ isContactModalOpen: false })}
           setImage={(currentImage) => this.setState({ image: currentImage, photoReady: true })}
-          createContact={
+          closeAndFetch={
             () => this.setState({
               isContactModalOpen: false,
               names: ContactServices.getAllNames(),
             })
           }
+          // _cancelCreate={
+          //   () => this.setState({
+          //     isContactModalOpen: false,
+          //   })
+          // }
         />
         <ContactImport
           isOpen={isImportModalOpen}

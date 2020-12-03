@@ -25,37 +25,38 @@ class EditUser extends React.Component {
 
   async createContact() {
     const { name, phone, imageObject } = this.state;
-    const image = `data:image/jpeg;base64,${imageObject.file}`;
+    const image = '';
+    if (imageObject !== undefined) {
+      const image = `data:image/jpeg;base64,${imageObject.file}`;
+    }
     const newContact = { name, phone, image };
-    // console.log( imageBase64 );
+    console.log(imageObject);
     await fileServices.createContact(newContact);
-    const { createContact } = this.props;
+    const { closeAndFetch } = this.props;
     this.setState({ name: '', phone: '', imageObject: '' });
-    createContact();
-    // return;
-    // createContact();
+    closeAndFetch();
   }
 
   saveChanges() {
     // fileServices.saveChanges()
-    const { name, phone } = this.state;
+    const { fileName ,name, phone } = this.state;
 
-    const { saveChanges } = this.props;
-    // saveChanges();
+    const { closeAndFetch } = this.props;
+    this.setState({ name: '', phone: '', imageObject: '' });
+    closeAndFetch();
   }
 
   cancelCreate() {
-    // reset values to ''
-    const { cancelCreate } = this.props;
+    const { closeModal } = this.props;
     this.setState({ name: '', phone: '', imageObject: '' });
-    // STILL NEED TO CLOSE THE MODAL
-    // cancelCreate();
+    closeModal();
   }
 
   cancelChanges() {
     // reset values to the original
-    const { cancelChanges } = this.props;
-    // cancelChanges();
+    const { closeModal } = this.props;
+    this.setState({ name: '', phone: '', imageObject: '' });
+    closeModal();
   }
 
   deleteContact() {

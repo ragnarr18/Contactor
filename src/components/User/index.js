@@ -17,7 +17,7 @@ class User extends React.Component {
     } = this.props;
     return (
       <View>
-        {this.state.photoReady
+        {this.props.photoReady
           && (
           <Image
             style={{
@@ -27,7 +27,7 @@ class User extends React.Component {
               borderColor: 'red',
             }}
             source={{
-              uri: `data:image/jpeg;base64,${this.state.image.file}`,
+              uri: `${this.props.image}`,
             }}
           />
           )}
