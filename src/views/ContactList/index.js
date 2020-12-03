@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  View, Text, Image, TouchableOpacity,
+  View, TextInput, Text, ScrollView, TouchableOpacity
 } from 'react-native';
-import { Icon, SearchBar } from 'react-native-elements';
+import { SearchBar } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import ContactListContainer from '../../components/ContactListContainer';
 import ContactServices from '../../services/ContactServices';
@@ -16,24 +16,34 @@ class ContactList extends React.Component {
       names: ContactServices.getAllNames(),
       searchTerm: '',
       isImportModalOpen: false,
+      fetchContacts: true,
     };
     this.editSearchTerm = this.editSearchTerm.bind(this);
   }
 
   editSearchTerm(text) {
     console.log(text);
+    // this.fetchContactsByName(text);
     this.setState({ searchTerm: text });
   }
 
   dynamicSearch() {
+    // console.log("dynamic");
     return this.state.names.filter(
       (name) => name.toLowerCase()
         .includes(this.state.searchTerm.toString().toLowerCase()),
     );
   }
 
+  // fetchContactsByName(fileNames) {
+  //   console.log('fetch');
+  //   const contactsArray = ContactServices.getContactsByName(fileNames);
+  //   this.setState({ contacts: contactsArray });
+  // }
+
   render() {
     const { navigation } = this.props;
+    const { fetchContacts } = this.state;
     const { image } = 'https://i.redd.it/yvq5a4xboh931.png';
     const { isImportModalOpen } = this.state;
 
@@ -49,19 +59,25 @@ class ContactList extends React.Component {
             round
             value={this.state.searchTerm}
             onChangeText={(text) => this.editSearchTerm(text)}
-            onClear={() => this.setState({ searchTerm: '' })}
+            onClear={() => this.setState({ searchTerm: '', fetchContacts: true })}
             placeholder="Search for a contact!"
           />
         </View>
-        <ContactListContainer
-          navigation={navigation}
-          names={this.dynamicSearch()}
-          image={image}
-        />
         <ImportContact
           isOpen={isImportModalOpen}
           closeModel={() => this.setState({ isImportModalOpen: false })}
         />
+        <ScrollView
+          style={styles.ScrollView}
+        >
+          <ContactListContainer
+            navigation={navigation}
+            names={this.dynamicSearch()}
+            fetchContacts={fetchContacts}
+            // contacts={this.state.contacts}
+            // image={image}
+          />
+        </ScrollView>
       </View>
     );
   }

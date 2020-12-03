@@ -18,9 +18,20 @@ export default StyleSheet.create({
     fontSize: 20,
   },
   phoneNumber: {
+    justifyContent: 'center',
+    alignItems: 'center',
     marginRight: 5,
+    borderStyle: 'solid',
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#000000',
     fontSize: 15,
     opacity: 0.5,
+  },
+  phoneNumberText: {
+    fontSize: 15,
+    marginTop: 3,
+    marginBottom: 3,
   },
   icon: {
     height: iconWidth,

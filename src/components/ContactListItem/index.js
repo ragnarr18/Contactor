@@ -16,7 +16,7 @@ function makeCall(phone) {
     alert('This contact has an invalid phone number');
     return;
   }
-  console.log('length is incorrect:', phone.length)
+  console.log('length is incorrect:', phone.length);
 
   const args = {
     number: phone,
@@ -53,12 +53,16 @@ class ContactListItem extends React.Component {
             <Text style={styles.name}>
               {name}
             </Text>
-            <Text style={styles.phoneNumber}>
-              {phone}
-            </Text>
           </View>
         </CollapseHeader>
         <CollapseBody>
+          <View style={styles.phoneNumber}>
+            <Text style={styles.phoneNumberText}>
+              Phone Number:
+              {' '}
+              {phone}
+            </Text>
+          </View>
           <View
             style={{
               flexDirection: 'row',
@@ -90,7 +94,7 @@ class ContactListItem extends React.Component {
 }
 
 ContactListItem.defaultProps = {
-  phone: PropTypes.string = 'missing phone number',
+  phone: PropTypes.string = 'Missing',
   image: PropTypes.string = 'https://i.redd.it/yvq5a4xboh931.png',
 };
 
