@@ -27,6 +27,7 @@ class EditUser extends React.Component {
     console.log("close")
     // fileServices.createContact()
     const { createContact, closeModal } = this.props;
+    console.log({ createContact });
     closeModal();
     // return;
     // createContact();
@@ -119,6 +120,7 @@ class EditUser extends React.Component {
         <View style={Styles.textWrap}>
           <Text>Phone: </Text>
           <TextInput
+            keyboardType="numeric"
             defaultValue={phoneNumber}
             onChangeText={(text) => this.updatePhone(text)}
             style={Styles.textBox}
