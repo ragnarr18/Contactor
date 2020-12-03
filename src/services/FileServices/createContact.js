@@ -1,5 +1,6 @@
 import * as FileSystem from 'expo-file-system';
 import data from '../../resources/USERS.json';
+import defaultProfilePicture from '../../resources/PROFILE_PIC.json';
 
 const contactsDirectory = `${FileSystem.documentDirectory}contacts`;
 
@@ -12,17 +13,20 @@ const setupDirectory = async () => {
 
 async function createContact(contact) {
   await setupDirectory();
-  // const item = { name: contact.name, phone: contact.phone, image: cont.image };
+  const newContact = { name: contact.name, phone: contact.phone, image: contact.image };
   const newName = contact.name.replace(/\s/g, '').toLowerCase();
   const fileName = `${contactsDirectory}/${newName}${contact.phone}.json`;
   // console.log(newStr.toLowerCase());
   // console.log(`${contactsDirectory}/${newName}${populus[i].phone}.json`);
-  console.log(contact.image);
-  await FileSystem.writeAsStringAsync(fileName, JSON.stringify(contact));
+  // console.log(contact.image);
+  if (contact.image === '') {
+    newContact.image = defaultProfilePicture.image;
+  }
+  await FileSystem.writeAsStringAsync(fileName, JSON.stringify(newContact));
   const fileInfo = await FileSystem.getInfoAsync(`file://${fileName}`);
-  console.log("file created: ", fileInfo.exists);
+  console.log('file created: ', fileInfo.exists);
 
-  data.users.push({ name: contact.name, fileName: `${newName}${contact.phone}.json`});
+  data.users.push({ name: contact.name, fileName: `${newName}${contact.phone}.json` });
   return fileInfo.exists;
 }
 

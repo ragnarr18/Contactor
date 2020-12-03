@@ -90,7 +90,7 @@ class ContactList extends React.Component {
         />
         <ContactImport
           isOpen={isImportModalOpen}
-          closeModel={() => this.setState({ isImportModalOpen: false })}
+          closeModel={() => this.setState({ isImportModalOpen: false, names: ContactServices.getAllNames() })}
         />
         <ScrollView
           style={styles.ScrollView}

@@ -8,6 +8,7 @@ import SelectMultiple from 'react-native-select-multiple';
 import * as Contacts from 'expo-contacts';
 import Modal from '../../modals/importContactModal';
 import styles from './styles';
+import { createContact } from '../../services/FileServices';
 
 class ContactImport extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class ContactImport extends React.Component {
       const { status } = await Contacts.requestPermissionsAsync();
       if (status === 'granted') {
         const { data } = await Contacts.getContactsAsync({
-          fields: [Contacts.Fields.Emails],
+          fields: [Contacts.Fields.Name, Contacts.Fields.PhoneNumbers],
         });
 
         if (data.length > 0) {
@@ -45,14 +46,19 @@ class ContactImport extends React.Component {
     this.setState({ selected: selectedItems });
   }
 
-  returnSelected() {
+  async returnSelected() {
     const { selected } = this.state;
     const values = [];
 
-    selected.forEach((item) => {
-      values.push(item.value);
-    });
-    console.log(values);
+    for (let i = 0; i < selected.length; i++) {
+      const newContact = {
+        name: selected[i].value.name,
+        phone: selected[i].value.phoneNumbers[0].number,
+        image: '',
+      };
+      await createContact(newContact);
+      values.push(newContact);
+    }
     this.close()
     // return values;
   }
