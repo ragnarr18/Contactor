@@ -15,6 +15,7 @@ const contactsDirectory = `${FileSystem.documentDirectory}contacts`;
 const setupDirectory = async () => {
   const dir = await FileSystem.getInfoAsync(contactsDirectory);
   if (!dir.exists) {
+    console.log("directory DNE, creating it now\n");
     await FileSystem.makeDirectoryAsync(contactsDirectory);
   }
 };
@@ -28,9 +29,12 @@ async function populateContacts() {
   const fileInfo = await FileSystem.getInfoAsync(`file://${contactsDirectory}`);
   // console.log(fileInfo.exists);
   if (!fileInfo.exists) {
-    console.log('populateContacts');
+    await setupDirectory();
+    await FileSystem.writeAsStringAsync(`file://${contactsDirectory}/USERS.json`, JSON.stringify(data));
+    const usersjsonCreated = await FileSystem.getInfoAsync(`file://${contactsDirectory}/USERS.json`);
+    console.log("usersjsonCreated: ", usersjsonCreated);
+    console.log("adding default data!.................\n");
     for (let i = 0; i < populus.length; i++) {
-      await setupDirectory();
       const item = {
         name: populus[i].name, phone: populus[i].phone, image: populus[i].image, fileName: `${newName}${populus[i].phone}.json`,
       };
@@ -45,6 +49,7 @@ async function populateContacts() {
 }
 
 async function retriveInfo(user) {
+  //to clear the contacts DATA uncomment next command
   // await FileSystem.deleteAsync(`${contactsDirectory}`);
   const search = await populateContacts();
   // let result = null;
@@ -53,6 +58,8 @@ async function retriveInfo(user) {
   // await FileSystem.writeAsStringAsync(`${contactsDirectory}/${user}`, JSON.stringify(currentUser) )
   const fileInfo = await FileSystem.getInfoAsync(`file://${contactsDirectory}/${user}`);
   // console.log(fileInfo);
+  // const usersjsonCreated = await FileSystem.getInfoAsync(`file://${contactsDirectory}/USERS.json`);
+  // console.log("usersjsonCreated: ", usersjsonCreated);
   try {
     const result = await FileSystem.readAsStringAsync(`file://${contactsDirectory}/${user}`);
     // console.log("result", result);
@@ -106,7 +113,7 @@ async function retriveInfo(user) {
 // }
 
 async function getContactsByName(fileNames) {
-  console.log('getContactsByName');
+  // console.log('getContactsByName');
   // const contacts = [];
   const contactsInfo = [];
 
@@ -124,7 +131,7 @@ async function getContactsByName(fileNames) {
   //   contactsInfo.push(info);
   //   console.log('item', contactsInfo.length);
   // });
-
+  // await FileSystem.deleteAsync(`${contactsDirectory}`);
   for (let i = 0; i < fileNames.length; i++) {
     const info = await retriveInfo(fileNames[i]);
     info.fileName = fileNames[i];
