@@ -20,17 +20,14 @@ class ContactListContainer extends React.Component {
   }
 
   async fetchContactsByName(fileNames) {
-    console.log('fetch');
-    console.log("filenames in contactlist", fileNames);
     const contactsArray = await ContactServices.getContactsByName(fileNames);
-    console.log('this is the contactsArray : ', contactsArray.length);
     contactsArray.sort((a, b) => ((a.name > b.name) ? 1 : -1));
     this.setState({ contacts: contactsArray, fetched: true });
   }
 
   render() {
     const {
-      names, image, photo, navigation, fetchContacts,
+      names, navigation, fetchContacts,
     } = this.props;
     const { fetched } = this.state;
     // const contacts = names;
@@ -75,7 +72,6 @@ class ContactListContainer extends React.Component {
             ))}
           </View>
           )}
-
       </View>
     );
   }
@@ -83,14 +79,10 @@ class ContactListContainer extends React.Component {
 
 ContactListContainer.defaultProps = {
   names: '',
-  image: '',
-  photo: '',
 };
 
 ContactListContainer.propTypes = {
   names: PropTypes.string,
-  image: PropTypes.string,
-  photo: PropTypes.string,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
