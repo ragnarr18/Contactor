@@ -40,5 +40,5 @@ export default StyleSheet.create({
   },
   button: {
     marginRight: 25,
-  }
+  },
 });

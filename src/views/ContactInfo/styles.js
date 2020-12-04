@@ -16,5 +16,5 @@ export default StyleSheet.create({
     paddingTop: 2.5,
     paddingRight: 5,
     opacity: 0.5,
-  }
+  },
 });

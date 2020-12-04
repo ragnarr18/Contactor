@@ -25,7 +25,10 @@ async function populateContacts() {
     for (let i = 0; i < populus.length; i++) {
       const newName = populus[i].name.replace(/\s/g, '').toLowerCase();
       const item = {
-        name: populus[i].name, phone: populus[i].phone, image: populus[i].image, fileName: `${newName}${populus[i].phone}.json`,
+        name: populus[i].name,
+        phone: populus[i].phone,
+        image: populus[i].image,
+        fileName: `${newName}${populus[i].phone}.json`,
       };
       await FileSystem.writeAsStringAsync(`file://${contactsDirectory}/${newName}${populus[i].phone}.json`, JSON.stringify(item));
     }

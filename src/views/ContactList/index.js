@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, TextInput, Text, ScrollView, TouchableOpacity,
+  View, Text, ScrollView, TouchableOpacity,
 } from 'react-native';
 import { SearchBar, Icon } from 'react-native-elements';
 import PropTypes from 'prop-types';
@@ -24,13 +24,11 @@ class ContactList extends React.Component {
   }
 
   editSearchTerm(text) {
-    console.log(text);
     // this.fetchContactsByName(text);
     this.setState({ searchTerm: text });
   }
 
   dynamicSearch() {
-    console.log('dynamic');
     return ContactServices.getAllNames(this.state.searchTerm.replace(/\s+/g, ''));
     // return this.state.names.filter(
     //   (name) => name.toLowerCase()
@@ -113,7 +111,6 @@ class ContactList extends React.Component {
             // image={image}
           />
         </ScrollView>
-        <Text>End of list</Text>
       </View>
     );
   }
