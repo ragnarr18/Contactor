@@ -21,6 +21,7 @@ class ContactListContainer extends React.Component {
 
   async fetchContactsByName(fileNames) {
     console.log('fetch');
+    console.log("filenames in contactlist", fileNames);
     const contactsArray = await ContactServices.getContactsByName(fileNames);
     console.log('this is the contactsArray : ', contactsArray.length);
     contactsArray.sort((a, b) => ((a.name > b.name) ? 1 : -1));

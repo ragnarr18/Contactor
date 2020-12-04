@@ -24,10 +24,20 @@ class EditUser extends React.Component {
   }
 
   async createContact() {
-    const { name, phone, imageObject } = this.state;
+    console.log('create');
+    const { name, phone } = this.state;
+    let { imageObject } = this.state;
     let image = '';
     console.log('isUndefined: ', (imageObject !== undefined));
-    if (imageObject !== undefined) {
+    console.log('imageObject: ', imageObject);
+
+    if (imageObject === undefined) {
+      imageObject = '';
+      // image = `data:image/jpeg;base64,${imageObject.file}`;
+    }
+    if (imageObject === '') {
+      image = '';
+    } else {
       image = `data:image/jpeg;base64,${imageObject.file}`;
     }
     const newContact = { name, phone, image };

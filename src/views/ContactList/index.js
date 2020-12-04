@@ -14,7 +14,7 @@ class ContactList extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      names: ContactServices.getAllNames(),
+      names: ContactServices.getAllNames(''),
       searchTerm: '',
       isImportModalOpen: false,
       fetchContacts: true,
@@ -31,10 +31,11 @@ class ContactList extends React.Component {
 
   dynamicSearch() {
     console.log('dynamic');
-    return this.state.names.filter(
-      (name) => name.toLowerCase()
-        .includes(this.state.searchTerm.toString().toLowerCase()),
-    );
+    return ContactServices.getAllNames(this.state.searchTerm);
+    // return this.state.names.filter(
+    //   (name) => name.toLowerCase()
+    //     .includes(this.state.searchTerm.toString().toLowerCase()),
+    // );
   }
   //
   // async fetchContactsByName(fileNames) {
@@ -88,7 +89,7 @@ class ContactList extends React.Component {
           closeAndFetch={
             () => this.setState({
               isContactModalOpen: false,
-              names: ContactServices.getAllNames(),
+              names: ContactServices.getAllNames(''),
             })
           }
           // _cancelCreate={
@@ -99,7 +100,7 @@ class ContactList extends React.Component {
         />
         <ContactImport
           isOpen={isImportModalOpen}
-          closeModel={() => this.setState({ isImportModalOpen: false, names: ContactServices.getAllNames() })}
+          closeModel={() => this.setState({ isImportModalOpen: false, names: ContactServices.getAllNames('') })}
         />
         <ScrollView
           style={styles.ScrollView}
@@ -107,7 +108,7 @@ class ContactList extends React.Component {
           <ContactListContainer
             navigation={navigation}
             names={this.dynamicSearch()}
-            fetchContacts={() => this.setState({ isImportModalOpen: false, names: ContactServices.getAllNames() })}
+            fetchContacts={() => this.setState({ isImportModalOpen: false, names: ContactServices.getAllNames('') })}
             // contacts={this.fetchContactsByName(this.state.names)}
             // image={image}
           />

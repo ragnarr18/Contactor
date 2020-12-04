@@ -14,6 +14,7 @@ const setupDirectory = async () => {
 
 async function createContact(contact) {
   await setupDirectory();
+  console.log(contact.image);
   const newContact = { name: contact.name, phone: contact.phone, image: contact.image };
   const newName = contact.name.replace(/\s/g, '').toLowerCase();
   // const fileName = `${contactsDirectory}/${newName}${contact.phone}.json`;
@@ -32,6 +33,7 @@ async function createContact(contact) {
 
   // data.users.push({ name: contact.name, fileName: `${newName}${contact.phone}.json` });
   data.users.push({ name: contact.name, fileName: `${id}.json` });
+  // await FileSystem.writeAsStringAsync(`file://${contactsDirectory}/USERS.json`, JSON.stringify(data));
   return fileInfo.exists;
 }
 
