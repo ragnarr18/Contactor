@@ -51,8 +51,24 @@ class EditUser extends React.Component {
   async saveChanges() {
     // fileServices.saveChanges()
     const {
-      name, phone, image,
+      name, phone,
     } = this.state;
+    let { imageObject } = this.state;
+    let image = '';
+    console.log('isUndefined: ', (imageObject !== undefined));
+    console.log('imageObject: ', imageObject);
+
+    if (imageObject === undefined) {
+      imageObject = '';
+      // image = `data:image/jpeg;base64,${imageObject.file}`;
+    }
+    if (imageObject === '') {
+      image = '';
+    } else {
+      image = `data:image/jpeg;base64,${imageObject.file}`;
+    }
+    // const newContact = { name, phone, image };
+    console.log(imageObject);
     const { fileName } = this.props;
     const editedContact = {
       name, phone, image, fileName,
