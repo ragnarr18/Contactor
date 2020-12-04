@@ -86,10 +86,8 @@ class ContactList extends React.Component {
           isOpen={isContactModalOpen}
           isCreate // change to false when done
           closeModal={() => this.setState({ isContactModalOpen: false })}
-          setImage={(currentImage) => this.setState({
-            image: currentImage,
-            photoReady: true
-          })}
+          setImage={(currentImage) => this.setState({ image: currentImage, photoReady: true })}
+          defaultValuesSet
           closeAndFetch={
             () => this.setState({
               isContactModalOpen: false,

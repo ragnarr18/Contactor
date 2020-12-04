@@ -8,7 +8,10 @@ import styles from './styles';
 class ContactListContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { contacts: [], fetched: false };
+    this.state = {
+      contacts: [],
+      fetched: false,
+    };
   }
 
   componentDidUpdate(prevProps) {
