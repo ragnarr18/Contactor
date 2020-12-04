@@ -1,6 +1,9 @@
 import React from 'react';
 import {
-  View, Text, ScrollView, TouchableOpacity,
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import { SearchBar, Icon } from 'react-native-elements';
 import PropTypes from 'prop-types';
@@ -99,7 +102,10 @@ class ContactList extends React.Component {
         />
         <ContactImport
           isOpen={isImportModalOpen}
-          closeModel={() => this.setState({ isImportModalOpen: false, names: ContactServices.getAllNames('') })}
+          closeModel={() => this.setState({
+            isImportModalOpen: false,
+            names: ContactServices.getAllNames('')
+          })}
         />
         <ScrollView
           style={styles.ScrollView}
@@ -107,7 +113,10 @@ class ContactList extends React.Component {
           <ContactListContainer
             navigation={navigation}
             names={this.dynamicSearch()}
-            fetchContacts={() => this.setState({ isImportModalOpen: false, names: ContactServices.getAllNames('') })}
+            fetchContacts={() => this.setState({
+              isImportModalOpen: false,
+              names: ContactServices.getAllNames('')
+            })}
             // contacts={this.fetchContactsByName(this.state.names)}
             // image={image}
           />
