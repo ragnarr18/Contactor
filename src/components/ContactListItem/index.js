@@ -3,16 +3,12 @@ import {
   View, Text, Image, TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import call from 'react-native-phone-call';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
 import styles from './styles';
 import callServices from '../../services/callServices';
 
 const callIcon = require('../../images/call.png');
 const infoIcon = require('../../images/information.png');
-const profileIcon = require('../../images/icon.png');
-
-
 
 class ContactListItem extends React.Component {
   constructor(props) {
@@ -96,6 +92,7 @@ ContactListItem.propTypes = {
   image: PropTypes.string.isRequired,
   phone: PropTypes.string,
   name: PropTypes.string.isRequired,
+  fileName: PropTypes.string.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,

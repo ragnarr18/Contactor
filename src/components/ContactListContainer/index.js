@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import ContactListItem from '../ContactListItem';
 import ContactServices from '../../services/ContactServices';
@@ -20,17 +20,14 @@ class ContactListContainer extends React.Component {
   }
 
   async fetchContactsByName(fileNames) {
-    console.log('fetch');
-    console.log("filenames in contactlist", fileNames);
     const contactsArray = await ContactServices.getContactsByName(fileNames);
-    console.log('this is the contactsArray : ', contactsArray.length);
     contactsArray.sort((a, b) => ((a.name > b.name) ? 1 : -1));
     this.setState({ contacts: contactsArray, fetched: true });
   }
 
   render() {
     const {
-      names, image, photo, navigation, fetchContacts,
+      names, navigation, fetchContacts,
     } = this.props;
     const { fetched } = this.state;
     // const contacts = names;
@@ -75,22 +72,17 @@ class ContactListContainer extends React.Component {
             ))}
           </View>
           )}
-
       </View>
     );
   }
 }
 
 ContactListContainer.defaultProps = {
-  name: '',
-  image: '',
-  photo: '',
+  names: '',
 };
 
 ContactListContainer.propTypes = {
-  name: PropTypes.string,
-  image: PropTypes.string,
-  photo: PropTypes.string,
+  names: PropTypes.string,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
