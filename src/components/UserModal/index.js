@@ -16,21 +16,17 @@ class EditUser extends React.Component {
     this.state = { valuesSet: false };
   }
 
-  async selectFromCameraRoll() {
-    const photo = await imageServices.selectFromCameraRoll();
-    if (photo.length > 0) {
-      await this.addImage(photo);
-    }
+  setValues() {
+    const { name, phone } = this.props;
+    this.setState({
+      name, phone, valuesSet: true,
+    });
   }
 
   async createContact() {
-    console.log('create');
     const { name, phone } = this.state;
     let { imageObject } = this.state;
     let image = '';
-    console.log('isUndefined: ', (imageObject !== undefined));
-    console.log('imageObject: ', imageObject);
-
     if (imageObject === undefined) {
       imageObject = '';
       // image = `data:image/jpeg;base64,${imageObject.file}`;
@@ -41,7 +37,6 @@ class EditUser extends React.Component {
       image = `data:image/jpeg;base64,${imageObject.file}`;
     }
     const newContact = { name, phone, image };
-    console.log(imageObject);
     await fileServices.createContact(newContact);
     const { closeAndFetch } = this.props;
     this.setState({ name: '', phone: '', imageObject: '' });
@@ -49,15 +44,11 @@ class EditUser extends React.Component {
   }
 
   async saveChanges() {
-    // fileServices.saveChanges()
     const {
       name, phone,
     } = this.state;
     let { imageObject } = this.state;
     let image = '';
-    console.log('isUndefined: ', (imageObject !== undefined));
-    console.log('imageObject: ', imageObject);
-
     if (imageObject === undefined) {
       imageObject = '';
       // image = `data:image/jpeg;base64,${imageObject.file}`;
@@ -67,7 +58,6 @@ class EditUser extends React.Component {
     } else {
       image = `data:image/jpeg;base64,${imageObject.file}`;
     }
-    // const newContact = { name, phone, image };
     console.log(imageObject);
     const { fileName } = this.props;
     const editedContact = {
@@ -88,7 +78,6 @@ class EditUser extends React.Component {
   }
 
   cancelChanges() {
-    // reset values to the original
     const { closeModal } = this.props;
     this.setState({
       name: '', phone: '', imageObject: '', valuesSet: false,
@@ -96,17 +85,15 @@ class EditUser extends React.Component {
     closeModal();
   }
 
-  deleteContact() {
-    // some identifier
-    // probably the fileName of the contact
-    // fileServices.deleteContact(identifier);
-    const { deleteContact } = this.props;
-    // deleteContact();
+  async selectFromCameraRoll() {
+    const photo = await imageServices.selectFromCameraRoll();
+    if (photo.length > 0) {
+      await this.addImage(photo);
+    }
   }
 
   async takePhoto() {
     const photo = await imageServices.takePhoto();
-    console.log('takePhoto', photo.length);
     if (photo.length > 0) {
       await this.addImage(photo);
     }
@@ -115,12 +102,7 @@ class EditUser extends React.Component {
   async addImage(imageLocation) {
     this.setState({ loadingImage: true }); // spinning wheel mechanic
     const newImage = await fileServices.addImage(imageLocation);
-    // console.log('newImage', newImage);
-
-    // const createdImage = await fileServices.getImage(imageLocation);
-    // console.log(createdImage);
     this.setState({ imageObject: newImage, loadImage: false, photoSet: true });
-    // isModalOpen : false
   }
 
   updateName(text) {
@@ -131,16 +113,9 @@ class EditUser extends React.Component {
     this.setState({ phone: text });
   }
 
-  setValues() {
-    const { name, phone, image } = this.props;
-    this.setState({
-      name, phone, image, valuesSet: true,
-    });
-  }
-
   render() {
     const {
-      image, isCreate, isOpen, closeModal, setImage, defaultValuesSet,
+      isCreate, isOpen, closeModal, setImage, defaultValuesSet,
     } = this.props;
     const { name, phone, valuesSet } = this.state;
     if (!defaultValuesSet && !valuesSet) {
@@ -185,14 +160,14 @@ class EditUser extends React.Component {
           />
         </View>
         <View style={Styles.textWrap}>
-          {!isCreate
+          {/* {!isCreate
           && (
             <Button
               title="DELETE"
-              onPress={() => this.deleteContact()}
+              onPress={() => this.cancelCreate()}
               style={Styles.button}
             />
-          )}
+          )} */}
           <Button
             title="SAVE"
             onPress={isCreate ? () => this.createContact() : () => this.saveChanges()}
@@ -203,12 +178,22 @@ class EditUser extends React.Component {
             onPress={isCreate ? () => this.cancelCreate() : () => this.cancelChanges()}
             style={Styles.button}
           />
-          {/* <Button title="SAVE" onPress={() => this.createContact(closeModal)} />
-          <Button title="CANCEL" onPress={closeModal} /> */}
         </View>
       </Modal>
     );
   }
 }
+
+EditUser.propTypes = {
+  name: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+  fileName: PropTypes.string.isRequired,
+  isCreate: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  defaultValuesSet: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  closeAndFetch: PropTypes.func.isRequired,
+
+};
 
 export default EditUser;
