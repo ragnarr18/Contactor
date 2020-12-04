@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import ContactListItem from '../ContactListItem';
 import ContactServices from '../../services/ContactServices';
@@ -81,13 +81,13 @@ class ContactListContainer extends React.Component {
 }
 
 ContactListContainer.defaultProps = {
-  name: '',
+  names: '',
   image: '',
   photo: '',
 };
 
 ContactListContainer.propTypes = {
-  name: PropTypes.string,
+  names: PropTypes.string,
   image: PropTypes.string,
   photo: PropTypes.string,
   navigation: PropTypes.shape({
