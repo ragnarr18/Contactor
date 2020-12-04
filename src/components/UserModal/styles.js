@@ -15,19 +15,22 @@ export default StyleSheet.create({
     height: 100,
     borderWidth: 1,
     borderColor: 'red',
+    bottom: 20,
   },
   iconBox: {
     flex: 0.3,
     flexDirection: 'row',
     alignItems: 'center',
+    bottom: 20,
   },
   textWrap: {
-    flex: 0.1,
-    flexWrap: 'wrap',
-    margin: 5,
+    flex: 0.15,
+    flexDirection: 'row',
+    margin: 10,
     justifyContent: 'space-between',
   },
   textBox: {
+    alignSelf: 'flex-end',
     backgroundColor: 'white',
     borderStyle: 'solid',
     borderWidth: 1,
@@ -37,8 +40,10 @@ export default StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    bottom: 40,
   },
   button: {
-    marginRight: 25,
+    marginRight: 20,
+    marginLeft: 20,
   },
 });

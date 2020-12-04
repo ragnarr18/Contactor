@@ -112,10 +112,6 @@ class EditUser extends React.Component {
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
         <Text style={styles.title}>Contact Info</Text>
-        <Text>Profile Image:</Text>
-        {/* {this.state.photoSet // or display default image
-          && ( */}
-        {/* {console.log("photo", this.state.imageObject)} */}
         <Image
           style={styles.image}
           source={{ uri: this.state.imageObject }}
@@ -128,15 +124,16 @@ class EditUser extends React.Component {
             <Entypo name="image" style={styles.icons} />
           </TouchableOpacity>
         </View>
-        <View>
+        <View style={{ bottom: 20 }}>
           <Button
             title="Remove Image"
             onPress={() => this.changeImageObject()}
-            style={styles.button}
           />
         </View>
         <View style={styles.textWrap}>
-          <Text>Name: </Text>
+          <Text>
+            {'Name:  '}
+          </Text>
           <TextInput
             value={name}
             onChangeText={(text) => this.updateName(text)}
@@ -159,14 +156,12 @@ class EditUser extends React.Component {
             <Button
               title="SAVE"
               onPress={isCreate ? () => this.createContact() : () => this.saveChanges()}
-              style={styles.button}
             />
           </View>
           <View style={styles.button}>
             <Button
               title="CANCEL"
               onPress={isCreate ? () => this.cancelCreate() : () => this.cancelChanges()}
-              style={styles.button}
             />
           </View>
         </View>
