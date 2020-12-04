@@ -136,7 +136,7 @@ class EditUser extends React.Component {
           />
         </View>
         <View style={styles.textWrap}>
-          <Text>Name: </Text>
+          <Text>Name:  </Text>
           <TextInput
             value={name}
             onChangeText={(text) => this.updateName(text)}

@@ -39,6 +39,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   button: {
-    marginRight: 25,
+    marginTop: 15,
+    marginRight: 20,
   },
 });
