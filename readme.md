@@ -35,3 +35,4 @@ the Contactor, a react-native project in app development
   - hvernig er hægt að byrja frá scratch í Expo File System, s.s. eyða files og flr
   - hvar er Expo file system geymt? er það permanent
   - Warning: Cannot update during an existing state transition (such as within `render`). Render methods should be a pure function of props and state.
+  - þarf að delete-user?
