@@ -1,6 +1,6 @@
 import call from 'react-native-phone-call';
 
-export default function makeCall(phone) {
+function makeCall(phone) {
   if (phone.length !== 7) {
     alert('This contact has an invalid phone number');
     return;
@@ -13,3 +13,5 @@ export default function makeCall(phone) {
   };
   call(args).catch(console.error);
 }
+
+export default makeCall;
