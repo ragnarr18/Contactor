@@ -14,7 +14,7 @@ export default StyleSheet.create({
     width: 100,
     height: 100,
     borderWidth: 1,
-    borderColor: 'red',
+    borderColor: '#000000',
     bottom: 20,
   },
   iconBox: {
