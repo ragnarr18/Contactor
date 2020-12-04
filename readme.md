@@ -27,6 +27,7 @@ the Contactor, a react-native project in app development
   - fara yfir requirements og vera 100% að allt sé í appinu sem þarf að vera
   - laga scrollview
   - taka delete takkan úr Edit, eða gera hann nothæfann
+  - bæta við spinning wheel
   - gera prufur
   - limit testa, reyna að krasha forritið
   - stroka út óþarfa kóða
