@@ -31,7 +31,7 @@ class ContactList extends React.Component {
 
   dynamicSearch() {
     console.log('dynamic');
-    return ContactServices.getAllNames(this.state.searchTerm);
+    return ContactServices.getAllNames(this.state.searchTerm.replace(/\s+/g, ''));
     // return this.state.names.filter(
     //   (name) => name.toLowerCase()
     //     .includes(this.state.searchTerm.toString().toLowerCase()),
