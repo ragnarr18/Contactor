@@ -15,7 +15,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 10,
     width: winWidth - 100,
-    height: winHeight - 375,
+    height: winHeight * 0.55,
     backgroundColor: 'white',
     padding: 30,
   },
