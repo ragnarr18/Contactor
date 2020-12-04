@@ -38,12 +38,20 @@ class EditUser extends React.Component {
     closeAndFetch();
   }
 
-  saveChanges() {
+  async saveChanges() {
     // fileServices.saveChanges()
-    const { fileName, name, phone } = this.state;
-
+    const {
+      name, phone, image,
+    } = this.state;
+    const { fileName } = this.props;
+    const editedContact = {
+      name, phone, image, fileName,
+    };
+    await fileServices.editContact(editedContact);
     const { closeAndFetch } = this.props;
-    this.setState({ name: '', phone: '', imageObject: '' });
+    this.setState({
+      name: '', phone: '', imageObject: '', valuesSet: false,
+    });
     closeAndFetch();
   }
 
@@ -56,7 +64,9 @@ class EditUser extends React.Component {
   cancelChanges() {
     // reset values to the original
     const { closeModal } = this.props;
-    this.setState({ name: '', phone: '', imageObject: '' });
+    this.setState({
+      name: '', phone: '', imageObject: '', valuesSet: false,
+    });
     closeModal();
   }
 
@@ -107,9 +117,9 @@ class EditUser extends React.Component {
       image, isCreate, isOpen, closeModal, setImage, defaultValuesSet,
     } = this.props;
     const { name, phone, valuesSet } = this.state;
-    // if (!defaultValuesSet && !valuesSet) {
-    //   this.setValues();
-    // }
+    if (!defaultValuesSet && !valuesSet) {
+      this.setValues();
+    }
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
         <Text style={Styles.title}>Contact Info</Text>
@@ -134,6 +144,7 @@ class EditUser extends React.Component {
           <TextInput
             value={name}
             onChangeText={(text) => this.updateName(text)}
+            textAlign="center"
             style={Styles.textBox}
           />
         </View>
@@ -143,6 +154,7 @@ class EditUser extends React.Component {
             keyboardType="numeric"
             value={phone}
             onChangeText={(text) => this.updatePhone(text)}
+            textAlign="center"
             style={Styles.textBox}
           />
         </View>
@@ -152,15 +164,18 @@ class EditUser extends React.Component {
             <Button
               title="DELETE"
               onPress={() => this.deleteContact()}
+              style={Styles.button}
             />
           )}
           <Button
             title="SAVE"
             onPress={isCreate ? () => this.createContact() : () => this.saveChanges()}
+            style={Styles.button}
           />
           <Button
             title="CANCEL"
             onPress={isCreate ? () => this.cancelCreate() : () => this.cancelChanges()}
+            style={Styles.button}
           />
           {/* <Button title="SAVE" onPress={() => this.createContact(closeModal)} />
           <Button title="CANCEL" onPress={closeModal} /> */}

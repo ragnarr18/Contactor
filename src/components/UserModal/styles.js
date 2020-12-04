@@ -25,16 +25,20 @@ export default StyleSheet.create({
     flex: 0.1,
     flexWrap: 'wrap',
     margin: 5,
+    justifyContent: 'space-between',
   },
   textBox: {
     backgroundColor: 'white',
     borderStyle: 'solid',
     borderWidth: 1,
-    width: winWidth - 175,
+    width: winWidth - 180,
     height: 25,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
   },
+  button: {
+    marginRight: 25,
+  }
 });

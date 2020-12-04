@@ -107,7 +107,7 @@ class ContactList extends React.Component {
           <ContactListContainer
             navigation={navigation}
             names={this.dynamicSearch()}
-            fetchContacts={fetchContacts}
+            fetchContacts={() => this.setState({ isImportModalOpen: false, names: ContactServices.getAllNames() })}
             // contacts={this.fetchContactsByName(this.state.names)}
             // image={image}
           />

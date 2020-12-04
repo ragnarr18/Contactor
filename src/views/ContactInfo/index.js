@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, Button, TouchableOpacity } from 'react-native';
+import {
+  View, Text, Button, TouchableOpacity,
+} from 'react-native';
 import { Icon } from 'react-native-elements';
 // import userService from '../../services/userService'; (this is the image that we Need)
 import User from '../../components/User';
@@ -16,7 +18,9 @@ class ContactInfo extends React.Component {
       phoneNumber: '',
       isEditModalOpen: false,
     };
-    const { image, name, phone } = this.props;
+    const {
+      image, name, phone, fileName,
+    } = this.props;
     this.setNewInfo(image, name, phone);
   }
 
@@ -31,14 +35,28 @@ class ContactInfo extends React.Component {
   }
 
   openEditModal() {
+    console.log('this fileName: ', this.props.navigation.state.params.fileName);
+    console.log('this phone: ', this.props.navigation.state.params.phone);
+
     this.setState({ isEditModalOpen: true });
+  }
+
+  saveChanges(fetchContacts) {
+    const { navigation } = this.props;
+    this.setState({ isEditModalOpen: false });
+    fetchContacts()
+    //callback to ContactList
+    navigation.popToTop();
   }
 
   render() {
     // console.log("made it")
     const { navigation } = this.props;
-    const { name, phone, image } = navigation.state.params;
-    const { isEditModalOpen } = this.state;
+    const {
+      name, phone, image, fileName, fetchContacts
+    } = navigation.state.params;
+    const { photoReady, isEditModalOpen } = this.state;
+
     return (
       <View>
         <TouchableOpacity
@@ -58,6 +76,8 @@ class ContactInfo extends React.Component {
           name={name}
           phone={phone}
           image={image}
+          photoReady={photoReady}
+          fileName={fileName}
         />
         <View style={styles.dial}>
           <Icon
@@ -74,10 +94,17 @@ class ContactInfo extends React.Component {
           name={name}
           phone={phone}
           image={image}
+          fileName={fileName}
           isCreate={false}
           closeModal={() => this.setState({ isEditModalOpen: false })}
           setImage={(currentImage) => this.setState({ image: currentImage })}
           deleteContact={() => this.deleteContact()}
+          closeAndFetch={() => this.saveChanges(fetchContacts)}
+          // closeAndFetch={
+          //   () => this.setState({
+          //     isEditModalOpen: false,
+          //   })
+          // }
         />
       </View>
     );
