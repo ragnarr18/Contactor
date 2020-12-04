@@ -5,7 +5,9 @@ const { height } = Dimensions.get('screen');
 export default StyleSheet.create({
   container: {
     flex: 1,
+    flexGrow: 2,
     flexDirection: 'column',
-    height: height * 4.8,
+    height: height * 2.5,
+    backgroundColor: '#AAAAAA'
   },
 });

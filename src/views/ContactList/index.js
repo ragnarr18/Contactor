@@ -113,6 +113,7 @@ class ContactList extends React.Component {
             // image={image}
           />
         </ScrollView>
+        <Text>End of list</Text>
       </View>
     );
   }
