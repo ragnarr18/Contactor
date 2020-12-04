@@ -26,15 +26,6 @@ class EditUser extends React.Component {
   async createContact() {
     const { name, phone } = this.state;
     const { imageObject } = this.state;
-    // let image = '';
-    // if (imageObject === undefined) {
-    //   imageObject = '';
-    // }
-    // if (imageObject === '') {
-    //   image = '';
-    // } else {
-    //   image = `data:image/jpeg;base64,${imageObject.file}`;
-    // }
     const newContact = { name, phone, image: imageObject };
     await fileServices.createContact(newContact);
     const { closeAndFetch } = this.props;
@@ -47,15 +38,6 @@ class EditUser extends React.Component {
       name, phone,
     } = this.state;
     const { imageObject } = this.state;
-    // let image = '';
-    // if (imageObject === undefined) {
-    //   imageObject = '';
-    // }
-    // if (imageObject === '') {
-    //   image = '';
-    // } else {
-    //   image = `data:image/jpeg;base64,${imageObject.file}`;
-    // }
     console.log(imageObject);
     const { fileName } = this.props;
     const editedContact = {
@@ -191,7 +173,7 @@ EditUser.propTypes = {
   name: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
   fileName: PropTypes.string.isRequired,
-  isCreate: PropTypes.func.isRequired,
+  isCreate: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
   defaultValuesSet: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,

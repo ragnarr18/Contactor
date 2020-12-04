@@ -24,7 +24,7 @@ export default StyleSheet.create({
     marginRight: 5,
     // borderStyle: 'solid',
     // borderTopWidth: 1,
-    // borderBottomWidth: 1,
+    borderBottomWidth: 1,
     // borderColor: '#000000',
     fontSize: 15,
     opacity: 0.5,
