@@ -25,6 +25,9 @@ the Contactor, a react-native project in app development
 
 ## task fyrir 4.12
   - fara yfir requirements og vera 100% að allt sé í appinu sem þarf að vera
+  - laga scrollview
+  - taka delete takkan úr Edit, eða gera hann nothæfann
+  - bæta við spinning wheel
   - gera prufur
   - limit testa, reyna að krasha forritið
   - stroka út óþarfa kóða
@@ -34,3 +37,4 @@ the Contactor, a react-native project in app development
   - hvernig er hægt að byrja frá scratch í Expo File System, s.s. eyða files og flr
   - hvar er Expo file system geymt? er það permanent
   - Warning: Cannot update during an existing state transition (such as within `render`). Render methods should be a pure function of props and state.
+  - þarf að delete-user?
