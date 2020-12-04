@@ -105,7 +105,6 @@ class EditUser extends React.Component {
       isCreate, isOpen, closeModal, defaultValuesSet, image,
     } = this.props;
     const { name, phone, valuesSet } = this.state;
-    { console.log((!defaultValuesSet && !valuesSet)); }
     if (!defaultValuesSet && !valuesSet) {
       this.setValues();
     }
