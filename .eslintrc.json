@@ -20,6 +20,7 @@
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/no-did-update-set-state": 0,
-        "no-plusplus" :[2 ,{ "allowForLoopAfterthoughts": true }]
+        "no-plusplus" :[2 ,{ "allowForLoopAfterthoughts": true }],
+        "no-await-in-loop" : 0
     }
 }

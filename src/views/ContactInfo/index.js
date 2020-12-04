@@ -1,9 +1,9 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import {
-  View, Text, Button, TouchableOpacity,
+  View, Text, TouchableOpacity,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
-// import userService from '../../services/userService'; (this is the image that we Need)
 import User from '../../components/User';
 import UserModal from '../../components/UserModal';
 import callServices from '../../services/callServices';
@@ -13,47 +13,25 @@ class ContactInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: '',
-      name: '',
-      phoneNumber: '',
       isEditModalOpen: false,
     };
-    const {
-      image, name, phone, fileName,
-    } = this.props;
-    this.setNewInfo(image, name, phone);
-  }
-
-  setNewInfo(image, name, phoneNumber) {
-    this.setState({ image, name, phoneNumber });
-  }
-
-  deleteContact() {
-    const { navigation } = this.props;
-    this.setState({ closeModal: true });
-    navigation.popToTop();
   }
 
   openEditModal() {
-    console.log('this fileName: ', this.props.navigation.state.params.fileName);
-    console.log('this phone: ', this.props.navigation.state.params.phone);
-
     this.setState({ isEditModalOpen: true });
   }
 
   saveChanges(fetchContacts) {
     const { navigation } = this.props;
     this.setState({ isEditModalOpen: false });
-    fetchContacts()
-    //callback to ContactList
+    fetchContacts();
     navigation.popToTop();
   }
 
   render() {
-    // console.log("made it")
     const { navigation } = this.props;
     const {
-      name, phone, image, fileName, fetchContacts
+      name, phone, image, fileName, fetchContacts,
     } = navigation.state.params;
     const { photoReady, isEditModalOpen } = this.state;
 
@@ -100,15 +78,25 @@ class ContactInfo extends React.Component {
           setImage={(currentImage) => this.setState({ image: currentImage })}
           deleteContact={() => this.deleteContact()}
           closeAndFetch={() => this.saveChanges(fetchContacts)}
-          // closeAndFetch={
-          //   () => this.setState({
-          //     isEditModalOpen: false,
-          //   })
-          // }
         />
       </View>
     );
   }
 }
 
+ContactInfo.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+    popToTop: PropTypes.func.isRequired,
+    state: PropTypes.shape({
+      params: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        fileName: PropTypes.string.isRequired,
+        fetchContacts: PropTypes.func.isRequired,
+      }),
+    }),
+  }).isRequired,
+};
 export default ContactInfo;

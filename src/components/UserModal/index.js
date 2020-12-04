@@ -8,8 +8,7 @@ import Modal from '../../modals/UserModal';
 import Styles from './styles';
 import * as imageServices from '../../services/imageServices';
 import * as fileServices from '../../services/FileServices';
-// isCreate => then dont fill in the TextInput and use different services (create user)
-// not isCreate => fill in the TextInput and use yet another service (edit user)
+
 class EditUser extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +28,6 @@ class EditUser extends React.Component {
     let image = '';
     if (imageObject === undefined) {
       imageObject = '';
-      // image = `data:image/jpeg;base64,${imageObject.file}`;
     }
     if (imageObject === '') {
       image = '';
@@ -51,7 +49,6 @@ class EditUser extends React.Component {
     let image = '';
     if (imageObject === undefined) {
       imageObject = '';
-      // image = `data:image/jpeg;base64,${imageObject.file}`;
     }
     if (imageObject === '') {
       image = '';

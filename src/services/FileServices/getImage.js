@@ -12,13 +12,9 @@ const setupDirectory = async () => {
 const getImage = async (wantedFile) => {
   const splitWantedFile = wantedFile.split('/');
   const noDirWantedFile = splitWantedFile[splitWantedFile.length -1];
-  console.log('PropTypes');
   await setupDirectory();
-  console.log('getImage', wantedFile);
   const result = await FileSystem.readDirectoryAsync(imageDirectory);
   return Promise.all(result.map(async (fileName) => {
-    // console.log("filename", fileName);
-    // console.log(fileName === noDirWantedFile)
     if (fileName === noDirWantedFile) {
       return {
         name: fileName,

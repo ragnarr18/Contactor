@@ -25,7 +25,6 @@ class ContactListItem extends React.Component {
       navigation,
       fetchContacts,
     } = this.props;
-    // {console.log("this is the image", image)};
     const { navigate } = navigation;
     const ready = true;
 
@@ -36,7 +35,6 @@ class ContactListItem extends React.Component {
             <Image
               style={[styles.icon, styles.verticalAlign, { borderRadius: 75 / 2 }]}
               resizeMode="cover"
-              // source={{uri: image}}
               source={{ uri: `${image}` }}
             />
             <Text style={styles.name}>
@@ -92,6 +90,7 @@ ContactListItem.propTypes = {
   image: PropTypes.string.isRequired,
   phone: PropTypes.string,
   name: PropTypes.string.isRequired,
+  fetchContacts: PropTypes.func.isRequired,
   fileName: PropTypes.string.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,

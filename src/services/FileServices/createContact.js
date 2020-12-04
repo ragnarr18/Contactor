@@ -14,26 +14,15 @@ const setupDirectory = async () => {
 
 async function createContact(contact) {
   await setupDirectory();
-  console.log(contact.image);
   const newContact = { name: contact.name, phone: contact.phone, image: contact.image };
-  const newName = contact.name.replace(/\s/g, '').toLowerCase();
-  // const fileName = `${contactsDirectory}/${newName}${contact.phone}.json`;
   const id = uuidv4();
   const fileName = `${contactsDirectory}/${id}.json`;
-  // console.log(newStr.toLowerCase());
-  // console.log(`${contactsDirectory}/${newName}${populus[i].phone}.json`);
-  // console.log(contact.image);
   if (contact.image === '') {
     newContact.image = defaultProfilePicture.image;
   }
   await FileSystem.writeAsStringAsync(fileName, JSON.stringify(newContact));
   const fileInfo = await FileSystem.getInfoAsync(`file://${fileName}`);
-  console.log('file created: ', fileInfo.exists);
-  console.log('file uri: ', fileInfo.uri);
-
-  // data.users.push({ name: contact.name, fileName: `${newName}${contact.phone}.json` });
   data.users.push({ name: contact.name, fileName: `${id}.json` });
-  // await FileSystem.writeAsStringAsync(`file://${contactsDirectory}/USERS.json`, JSON.stringify(data));
   return fileInfo.exists;
 }
 
