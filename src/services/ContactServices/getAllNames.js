@@ -2,7 +2,6 @@ import data from '../../resources/USERS.json';
 
 const { users } = data;
 
-
 function getFileName(user) {
   return user.fileName;
 }

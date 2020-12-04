@@ -6,6 +6,7 @@ const iconWidth = 60;
 export default StyleSheet.create({
   contactContainer: {
     borderBottomWidth: 1,
+    backgroundColor: 'white',
   },
   headerView: {
     flexDirection: 'row',
