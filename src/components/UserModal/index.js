@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import Modal from '../../modals/UserModal';
-import Styles from './styles';
+import styles from './styles';
 import * as imageServices from '../../services/imageServices';
 import * as fileServices from '../../services/FileServices';
 import PROFILE_PIC from '../../resources/PROFILE_PIC.json';
@@ -111,58 +111,64 @@ class EditUser extends React.Component {
     }
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
-        <Text style={Styles.title}>Contact Info</Text>
+        <Text style={styles.title}>Contact Info</Text>
         <Text>Profile Image:</Text>
         {/* {this.state.photoSet // or display default image
           && ( */}
         {/* {console.log("photo", this.state.imageObject)} */}
         <Image
-          style={Styles.image}
+          style={styles.image}
           source={{ uri: this.state.imageObject }}
         />
-        <View style={Styles.iconBox}>
+        <View style={styles.iconBox}>
           <TouchableOpacity onPress={() => this.takePhoto()}>
-            <Entypo name="camera" style={Styles.icons} />
+            <Entypo name="camera" style={styles.icons} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this.selectFromCameraRoll()}>
-            <Entypo name="image" style={Styles.icons} />
+            <Entypo name="image" style={styles.icons} />
           </TouchableOpacity>
         </View>
-        <View style={Styles.textWrap}>
+        <View>
+          <Button
+            title="Remove Image"
+            onPress={() => this.changeImageObject()}
+            style={styles.button}
+          />
+        </View>
+        <View style={styles.textWrap}>
           <Text>Name: </Text>
           <TextInput
             value={name}
             onChangeText={(text) => this.updateName(text)}
             textAlign="center"
-            style={Styles.textBox}
+            style={styles.textBox}
           />
         </View>
-        <View style={Styles.textWrap}>
+        <View style={styles.textWrap}>
           <Text>Phone: </Text>
           <TextInput
             keyboardType="numeric"
             value={phone}
             onChangeText={(text) => this.updatePhone(text)}
             textAlign="center"
-            style={Styles.textBox}
+            style={styles.textBox}
           />
         </View>
-        <View style={Styles.textWrap}>
-          <Button
-            title="RM IMAGE"
-            onPress={() => this.changeImageObject()}
-            style={Styles.button}
-          />
-          <Button
-            title="SAVE"
-            onPress={isCreate ? () => this.createContact() : () => this.saveChanges()}
-            style={Styles.button}
-          />
-          <Button
-            title="CANCEL"
-            onPress={isCreate ? () => this.cancelCreate() : () => this.cancelChanges()}
-            style={Styles.button}
-          />
+        <View style={styles.textWrap}>
+          <View style={styles.button}>
+            <Button
+              title="SAVE"
+              onPress={isCreate ? () => this.createContact() : () => this.saveChanges()}
+              style={styles.button}
+            />
+          </View>
+          <View style={styles.button}>
+            <Button
+              title="CANCEL"
+              onPress={isCreate ? () => this.cancelCreate() : () => this.cancelChanges()}
+              style={styles.button}
+            />
+          </View>
         </View>
       </Modal>
     );
