@@ -4,6 +4,7 @@ import { Icon } from 'react-native-elements';
 // import userService from '../../services/userService'; (this is the image that we Need)
 import User from '../../components/User';
 import UserModal from '../../components/UserModal';
+import { makeCall } from '../../services/callServices';
 import styles from './styles';
 
 class ContactInfo extends React.Component {
@@ -65,6 +66,7 @@ class ContactInfo extends React.Component {
             color="#33cc33"
             name="call"
             size={50}
+            onPress={() => makeCall(phone)}
           />
         </View>
         <UserModal

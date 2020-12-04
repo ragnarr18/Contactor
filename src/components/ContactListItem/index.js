@@ -6,24 +6,13 @@ import PropTypes from 'prop-types';
 import call from 'react-native-phone-call';
 import { Collapse, CollapseHeader, CollapseBody } from 'accordion-collapse-react-native';
 import styles from './styles';
+import { makeCall } from '../../services/callServices';
 
 const callIcon = require('../../images/call.png');
 const infoIcon = require('../../images/information.png');
 const profileIcon = require('../../images/icon.png');
 
-function makeCall(phone) {
-  if (phone.length !== 7) {
-    alert('This contact has an invalid phone number');
-    return;
-  }
-  console.log('length is incorrect:', phone.length);
 
-  const args = {
-    number: phone,
-    prompt: true,
-  };
-  call(args).catch(console.error);
-}
 
 class ContactListItem extends React.Component {
   constructor(props) {
