@@ -1,4 +1,5 @@
 import * as FileSystem from 'expo-file-system';
+import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import data from '../../resources/USERS.json';
 import defaultProfilePicture from '../../resources/PROFILE_PIC.json';
